@@ -1,0 +1,421 @@
+<style>
+
+    .Bubble.notEgg>i {
+        opacity: 1;
+        -webkit-transform: scale(1,1);
+        -moz-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        -o-transform: scale(1,1);
+        transform: scale(1,1);
+        pointer-events: initial;
+        background-image: url(../assets/images/farm/yida.png);
+    }
+
+</style>
+<div class="chicken-page">
+    <!--滚动公告-->
+    <div class="notice">
+        <em>(点我查看完整公告)</em>
+        <p>
+            <span>&nbsp;</span>
+        </p>
+    </div>
+
+    <div class="userBox">
+        <img class="bg" src="assets/images/farm/userBox.png" alt="">
+        <section>
+            <div class="headImg" style="background-image: url('assets/images/home/portrait/portrait-man.png')"></div>
+            <!--todo: 两个button不要换行-->
+            <!--todo: 按钮带提示标志 添加.tips-->
+            <button class="friend"></button><button class="library"></button>
+            <div class="item clearfix">
+                <div class="item-content">
+                    <p class="name">&emsp;</p>
+                    <!--todo:超出位数限制时 添加.round-->
+                    <!--鸡蛋-->
+                    <p class="clm clm-l">0</p>
+                    <!--鸡-->
+                    <p class="clm clm-r">0</p>
+                </div>
+            </div>
+        </section>
+        <img src="assets/images/farm/l-vine.png" alt="" class="l-vine vine">
+        <img src="assets/images/farm/r-vine.png" alt="" class="r-vine vine">
+        <em class="btn back"></em>
+        <em class="btn refresh"></em>
+    </div>
+
+    <div class="fieldBox">
+    <div class="middleware">
+    <ul class="field clearfix">
+        <img class="floor-bg" src="assets/images/farm/floor.png" alt="">
+        <!--todo 等级：lv1，lv2，lv3，lvMax-->
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="green">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="gold">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="gold">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="gold">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="gold">
+            <section class="Bubble"><i></i></section>
+        </li>
+        <li class="gold">
+            <section class="Bubble"><i></i></section>
+        </li>
+    </ul>
+    </div>
+    </div>
+
+    <div class="desktop">
+        <img src="assets/images/farm/desktop.png" alt="">
+        <div>
+            <button class="reclaim"></button>
+            <button class="Up"></button>
+            <button class="hatch"></button>
+            <button class="harvest"></button>
+            <button class="machine"></button>
+        </div>
+    </div>
+
+    <div class="dog">
+        <div>
+            <!--todo 小狗等级对应src数字-->
+            <img src="assets/images/farm/dog/03.gif" alt="">
+        </div>
+    </div>
+    <div class="cock" style="display: none;left: initial;">
+        <div>
+            <!--todo 公鸡-->
+            <img src="assets/images/cock.gif">
+        </div>
+    </div>
+
+</div>
+
+<section class="shade" style="display: none">
+    <!--todo：没有地块购买小狗-->
+    <div class="content min confirm show_buyDog_prompt" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>
+            <em class="chicken-num"></em>您还没有开地<br>确认是否购买哈士奇
+            <!--<span>成功几率为<em class="odds">　</em>。</span>-->
+        </p>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo: .confirm 为带确定取消的输入框
+              .min 为小弹窗
+              .content 为子窗口
+    -->
+    <!--todo：增养-->
+    <div class="content min confirm Up" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>输入增养数量</p>
+        <label for="">
+            <input type="number" value="0">
+        </label>
+        <br>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo：孵化-->
+    <div class="content min confirm hatch" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>输入孵化数量</p>
+        <label for="">
+            <input type="number" value="0">
+        </label>
+        <br>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo: 收获提示确认-->
+    <div class="content min reap" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>恭喜收获 <em></em> 只小鸡</p>
+        <br>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo: 仓库小鸡数量不够-->
+    <div class="content min NoChick" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>仓库小鸡数量不够</p>
+        <br>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo: 还没有超级孵化机-->
+    <div class="content no-mchine mchine" style="display: none">
+        <div class="title">
+            <img src="assets/images/window/title-bg.png" class="title-c" alt="">
+            <img src="assets/images/window/left_y.png" class="title-l" alt="">
+            <img src="assets/images/window/right_y.png" class="title-r" alt="">
+            <em>超级孵化机</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <div class="show">
+            <img src="assets/images/window/mchine/no-mchine.png" alt="">
+            <div>
+                <p>你还没有超级孵化机呢</p>
+                <p>把鸡蛋放进超级孵化机能获得<br>
+                    更高的收益哦~</p>
+            </div>
+        </div>
+        <button class="yellowBtn"><span>推荐<em>50</em>位好友即可获取</span></button>
+        <button class="yellowBtn" id="chickBuyMchine"><span>消耗<em>1000</em>小鸡马上获取</span></button>
+    </div>
+    <!--todo: 有超级孵化机-->
+    <div class="content has-mchine mchine" style="display: none">
+        <div class="title">
+            <img src="assets/images/window/title-bg.png" class="title-c" alt="">
+            <img src="assets/images/window/left_y.png" class="title-l" alt="">
+            <img src="assets/images/window/right_y.png" class="title-r" alt="">
+            <em>超级孵化机</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <div class="show">
+            <img src="assets/images/window/mchine/has-mchine.png" alt="">
+            <div>
+                <p><em>0</em> 只鸡蛋正在孵化...</p>
+                <p>把鸡蛋放进超级孵化机能获得<br>
+                    更高的收益哦~</p>
+            </div>
+        </div>
+        <button class="yellowBtn push" style="width: 30%"><span>放入鸡蛋</span></button>
+        <button class="yellowBtn pull" style="width: 30%;left: 96%;bottom: 5.144rem"><span>取出鸡蛋</span></button>
+        <!--todo:有小鸡按钮带提示标志 添加i.tips-->
+        <button class="yellowBtn getChick"><i class="tips"></i><span>收获小鸡</span></button>
+        <!--<button class="yellowBtn pull"><span>取出鸡蛋</span></button>-->
+        <!--todo:没有小鸡-->
+        <button class="grayBtn" style="display:none"><span>还没有可以收获的小鸡</span></button>
+    </div>
+    <!--todo：放入鸡蛋-->
+    <div class="content min confirm push-egg" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>输入鸡蛋数量</p>
+        <label for="">
+            <input type="number" value="0">
+        </label>
+        <br>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo：取出鸡蛋-->
+    <div class="content min confirm pull-egg" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>取出鸡蛋数量</p>
+        <label for="">
+            <input type="number" value="0">
+        </label>
+        <br>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo：消耗鸡获取孵化机-->
+    <div class="content min confirm buySuper" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>将消耗1000只<i class="icon-check"></i>获取超级孵化机</p>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo：消耗鸡升级狗-->
+    <div class="content min confirm UpDog" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>
+            将消耗<em class="chicken-num">100</em>只<i class="icon-check"></i><br>
+            <span>成功率<em class="odds">　</em>。</span>继续吗？<br><span class="text_opstion"></span>
+        </p>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo：消耗鸡获取30天一键打扫-->
+    <div class="content min confirm buyKeyCleanDay" style="display: none">
+        <div class="flex-box">
+            <div class="f-l"></div>
+            <div class="flex"></div>
+            <div class="f-r"></div>
+        </div>
+        <p>
+            将消耗<em class="chicken-num">100</em>只<i class="icon-check"></i><br>
+            <span>购买一键打扫。</span>继续吗？
+        </p>
+        <button class="buffBtn"><span>取消</span></button>
+        <button class="yellowBtn"><span>确认</span></button>
+        <i class="bottom"></i>
+    </div>
+    <!--todo:好友列表-->
+    <div class="content friend-list" style="display: none">
+        <div class="title">
+            <img src="assets/images/window/title-bg.png" class="title-c" alt="">
+            <img src="assets/images/window/left_y.png" class="title-l" alt="">
+            <img src="assets/images/window/right_y.png" class="title-r" alt="">
+            <em>好友列表</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <ul class="show">
+        </ul>
+        <button class="yellowBtn" id="quickClean"><span>一键打扫</span></button>
+        <button class="yellowBtn" id="invitation_friend"><span>邀请伙伴</span></button>
+    </div>
+    <!--todo: 公告弹窗-->
+    <div class="content notice" style="display: none">
+        <div class="title">
+            <img src="assets/images/window/title-bg.png" class="title-c" alt="">
+            <img src="assets/images/window/left_y.png" class="title-l" alt="">
+            <img src="assets/images/window/right_y.png" class="title-r" alt="">
+            <em>公告</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <ul class="show"></ul>
+    </div>
+    <!--todo:我的仓库-->
+    <div class="content storage" style="display: none">
+        <div class="title">
+            <img src="assets/images/window/title-bg.png" class="title-c" alt="">
+            <img src="assets/images/window/left_y.png" class="title-l" alt="">
+            <img src="assets/images/window/right_y.png" class="title-r" alt="">
+            <em>我的仓库</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <ul class="show">
+            <!--todo：列表项固定-->
+            <li class="number">
+                <i class="ico chick"></i>
+                <div class="content">
+                    <p class="name">小鸡</p>
+                    <!--<em>24552只</em>-->
+                    <em class="chicksNum"></em>
+                </div>
+                <button class="redListBtn" id="gotoUp"><span>去增养</span></button>
+            </li>
+            <li class="number">
+                <i class="ico egg"></i>
+                <div class="content">
+                    <p class="name">鸡蛋</p>
+                    <!--<em>25只</em>-->
+                    <em class="eggsNum"></em>
+                </div>
+                <button class="redListBtn" id="hatch"><span>去孵化</span></button>
+            </li>
+            <li class="text">
+                <i class="ico fence"></i>
+                <div class="content">
+                    <!--<p class="name">木栅栏</p>-->
+                    <p class="name fenceLevel">木栅栏</p>
+                    <p class="info">每邀请10位好友可<em>获得</em>/<em>升级</em></p>
+                </div>
+                <button class="redListBtn fenceLevel"><span>升级</span></button>
+            </li>
+            <li class="text library-dog">
+                <i class="ico haDog"></i>
+                <div class="content">
+                    <!--<p class="name">哈士奇<em class="grade">Lv.1</em></p>-->
+                    <p class="name">哈士奇<em class="grade dogLevel"></em></p>
+                    <p class="info">等级越高，小鸡的产量越高哦</p>
+                </div>
+                <button class="redListBtn"><span>购买</span></button>
+            </li>
+            <li class="text haveSuperIncubator">
+                <i class="ico machine"></i>
+                <div class="content">
+                    <p class="name">孵化机</p>
+                    <p class="info">孵化机孵化鸡蛋，产量更高哦</p>
+                </div>
+                <button class="redListBtn"><span>获得</span></button>
+            </li>
+            <li class="text">
+                <i class="ico clean"></i>
+                <div class="content">
+                    <p class="name">一键打扫</p>
+                    <p class="info">打扫所有好友农场，期限30日</p>
+                </div>
+                <button class="grayListBtn keyCleanDay"><span>剩余0日</span></button>
+            </li>
+        </ul>
+    </div>
+    <!--todo:注冊-->
+    <div class="register" style="display: none;height: 100%">
+        <img src="assets/images/window/register.png" alt="">
+    </div>
+    <!--todo：邀請-->
+    <div class="invite" style="display: none;height: 100%">
+        <img src="assets/images/window/invite.png" alt="">
+    </div>
+</section>

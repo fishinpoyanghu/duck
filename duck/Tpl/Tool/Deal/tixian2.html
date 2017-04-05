@@ -1,0 +1,141 @@
+﻿<extend name="Tool@Index:index" />
+<block name="title">提现管理</block>
+<block name="header"></block>
+<block name="aside"></block>
+<block name="content">
+
+	<style>
+
+		.star-bar-show{background:url(__HUI__/images/iconpic-star-S-default.png) repeat-x 0 0}
+		.star-bar-show .star{background:url(__HUI__/images/iconpic-star-S.png) repeat-x 0 0;}
+		.star-1{width:20%;}
+		.star-2{ width:40%}
+		.star-3{width:60%;}
+		.star-4{ width:80%}
+		.star-5{ width:100%}
+		.star-bar-show.size-M{width:120px;height:24px}
+		.star-bar-show.size-M,.star-bar-show.size-M .star{background-size:24px}
+		.star-bar-show.size-M .star{ height:24px}
+		.star-bar-show.size-S{width:80px; height:16px}
+		.star-bar-show.size-S,.star-bar-show.size-S .star{background-size:16px}
+		.star-bar-show.size-S .star{ height:16px}
+		.star-bar{font-size:0;line-height: 0}
+		.star-bar .star{display: inline-block;float: left}
+
+	</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 交易管理 <span class="c-gray en">&gt;</span> 提现管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="60">编号</th>
+				<th width="100">账户名</th>
+				<th width="100">开联通提现订单编号</th>
+				<th width="50">提现金额</th>
+				<th width="50">提现钱包</th>
+				<th width="130">创建时间</th>
+				<th width="70">状态</th>
+				<th width="100">操作</th>
+				<th width="25"><input type="checkbox" name="" value=""></th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist name="list" id="vo">
+			<tr class="text-c">
+				<td><{$vo.id}></td>
+				<td><u style="cursor:pointer" class="text-primary"><a href="<{:U('Tool/Index/home',array('account'=>$vo['account']))}>" target="_blank"><{$vo.account}></a></u></td>
+				<td><{$vo.txorder}></td>
+				<td><{$vo.money}></td>
+				<td class="td-status">
+					<if condition="$vo.type eq jiangli"><span class="label label-danger radius">奖励钱包</span></if>
+					<if condition="$vo.type eq licai"><span class="label label-warning radius">理财钱包</span></if>
+				</td>
+				<td><{$vo.date|date="Y-m-d H:i",###}></td>
+				<td class="td-status">
+					<if condition="$vo.status eq 0"><span class="label label-danger radius">提现中</span></if>
+					<if condition="$vo.status eq 1"><span class="label label-warning radius">提现成功</span></if>
+					<if condition="$vo.status eq 2"><span class=Î"label label-success radius">提现失败</span></if>
+					<if condition="$vo.status eq 3"><span class=Î"label label-success radius">拒绝提现</span></if>
+				</td>
+				<td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="pass(this,'<{$vo.id}>')" href="javascript:;" title="接受"><i class="Hui-iconfont">&#xe6a7;</i></a> <a title="拒绝" href="javascript:;" onclick="no_pass(this,'<{$vo.id}>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6a6;</i></a></td>
+				<td><input type="checkbox" value="1" name=""></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+</block>
+
+<block name="js">
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__LIB__/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__LIB__/lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__LIB__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+
+/*密码-修改*/
+function change_password(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+
+
+
+
+	function pass(obj,id){
+
+		layer.confirm('确认要通过吗？',function(index){
+
+			$.post("<{:U('Tool/Deal/baoli_pass')}>",{id:id},function(data){
+
+				if(data.status == 1){
+					$(obj).parents("tr").remove();
+				}
+				layer.msg(data.info,{icon:1,time:1000});
+			});
+		});
+	}
+
+	function no_pass(obj,id){
+
+	layer.confirm('确认要拒绝吗？',function(index){
+
+		$.post("<{:U('Tool/Deal/baoli_no_pass')}>",{id:id},function(data){
+			$(obj).parents("tr").remove();
+			layer.msg('操作成功!',{icon:1,time:1000});
+		});
+	});
+}
+
+
+</script>
+</block>

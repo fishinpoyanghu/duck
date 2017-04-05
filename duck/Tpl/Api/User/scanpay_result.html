@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<?php
+
+	        header('Content-Type: text/html; charset=UTF-8');
+
+     ?>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>支付宝支付</title>
+
+<meta name="description" content="支付宝支付" />
+
+<meta name="keywords" content="支付宝支付" />
+
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+
+
+
+	<script type="text/javascript">
+
+	   var timer;
+
+		$(function(){
+
+			var handler = function(){
+
+				var out_trade_no = $('input[name=out_trade_no]').val();
+
+				$.post("scanQuery.php?ajax=1&orderId="+out_trade_no,null,function(msg){
+
+				//	alert(msg);
+
+                   // alert(msg.msg1);
+
+					if(msg.msg1 == 'BD'){
+
+ 					//	alert("支付成功");
+
+						document.location.href="scanpay_success.php";
+
+						clearInterval(timer);
+
+					}
+
+				}, 'json');
+
+			}
+
+			timer = setInterval(handler , 5000);
+
+		});
+
+	</script>
+
+</head>
+
+<body>
+
+		<?php
+
+            $total_fee     = $_REQUEST['totalAmount'];             
+
+            $out_trade_no  = $_REQUEST['orderId'];  
+
+            $body     = $_REQUEST['productName'];             
+
+            $code_img_url  = $_REQUEST['code_img_url'];              
+
+       ?>
+
+        
+
+<div align="center" bgcolor="#666666">
+
+   <div>
+
+<!--扫描代码-->
+
+	<input type="hidden" name="out_trade_no"  value="<?php echo $out_trade_no  ?>"/>
+
+      <div class="s-con" id="codem">
+
+	   <div class="m26">
+
+               <h1>订单提交成功，请您尽快付款！</h1>
+
+               <div class="num"><span class="color1 ml16" style="font-size:15px;">订单号：<label id="out_trade_no" class="orange"><?php echo $out_trade_no  ?></label></span><span class="color1 ml16">请您在提交订单后 <span class="orange">5分钟</span> 内完成支付，否则订单会自动取消。</span></div>
+
+         </div>
+
+         <div class="title"><span class="color1 ml16" style="font-size:15px;">商品名称：<label class="orange"><?php echo $body  ?></label></span></br><span class="color1 ml16" style="font-size:15px;">订单金额：<label class="orange"><?php echo $total_fee/100  ?></label>元</span>
+
+		 
+
+		 
+
+		 </div>
+
+         <div><img src="<?php echo $code_img_url  ?>"/></div>
+
+           <div class="m26">
+
+             <div class="title">请使用支付宝“扫一扫”扫描二维码已完成支付</div>
+
+           </div>
+
+      </div>
+
+
+
+   </div>
+
+</div>
+
+</body>
+
+</html>
+

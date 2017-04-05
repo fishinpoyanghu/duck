@@ -1,0 +1,185 @@
+﻿<extend name="Tool@Index:index" />
+<block name="title">会员管理</block>
+<block name="header"></block>
+<block name="aside"></block>
+<block name="content">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>  提现管理 <span class="c-gray en">&gt;</span> 提现 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<!--<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="pin_add('派送激活码','<{:U('Tool/Index/wallet_add')}>','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 赠送奖励</a></span>  </div>!-->
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="60">记录编号</th>
+				<th width="70">用户</th>
+				<!--<th width="50">奖励钱包</th>!-->
+				<!--<th width="50">原始余额</th>!-->
+				<th width="80">提现金额</th>
+				<!--<th width="100">现有金额</th>!-->
+				<th width="130">银行户名</th>
+				<th width="130">银行卡号</th>
+				<th width="130">订单号</th>
+				<th width="130">类型</th>
+				<th width="130">时间</th>
+				<th width="130">状态</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist name="list" id="vo">
+			<tr class="text-c">
+				<td><input type="checkbox" value="1" name=""></td>
+				<td><{$vo.id}></td>
+				<td><{$vo.touch_member}></td>
+				<!--<td>
+					<if condition="$vo.wallet eq 11">
+						理财钱包
+					</if>
+					<if condition="$vo.wallet eq 12">
+						奖励钱包
+					</if>
+				</td>!-->
+				<!--<td><{$vo.before_prize}></td>!-->
+				<td><{$vo.prize}></td>
+				<td><{$vo.drawing_name}></td>
+				<td><{$vo.drawing_code}></td>
+				
+				<td><{$vo.orderid}></td>
+				<!--<td><{$vo.after_prize}></td>!-->
+				<td><span class="label label-success radius"><{$vo.content}></span></td>
+				<td class="text-l"><{$vo.date|date="Y-m-d H:i",###}></td>
+				<td class="text-l">
+				<if condition="$vo['zhuangtai'] eq 1">
+				已打款<elseif condition="$vo['zhuangtai'] eq 2" />拒绝<elseif condition="$vo['zhuangtai'] eq 3" />处理中
+				</if>
+				</td>
+				<td class="td-manage">
+				<a title="打款" href="javascript:;" onclick="drawing(this,<{$vo.id}>)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6a7;</i></a>
+				<a title="驳回" href="javascript:;" onclick="refuse(this,<{$vo.id}>)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6a6;</i></a>
+				<a title="删除" href="javascript:;" onclick="del(this,<{$vo.id}>)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+</block>
+
+<block name="js">
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__LIB__/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__LIB__/lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__LIB__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,1,2,4,]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+/*用户-添加*/
+function pin_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-停用*/
+function member_stop(obj,id){
+	layer.confirm('确认要停用吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+		$(obj).remove();
+		layer.msg('已停用!',{icon: 5,time:1000});
+	});
+}
+
+/*用户-打款*/
+function drawing(obj,id){
+	layer.confirm('确认要打款吗？',function(index){
+		$.ajax({
+				url:"<{:U('confirmDrawing')}>",
+				type:"post",
+				data:{id:id},
+				dataType:"json",
+				success:function(data){
+					if(data.errcode != 1){
+						layer.msg(data.msg,{icon:1,time:3000});
+						return false;
+					}else{
+						layer.msg('已打款!',{icon: 6,time:1000});
+						return false;
+					}
+				}
+			});
+		
+	});
+}
+/*用户-拒绝*/
+function refuse(obj,id){
+	layer.confirm('确认要拒绝吗？',function(index){
+		$.ajax({
+				url:"<{:U('refuse')}>",
+				type:"post",
+				data:{id:id},
+				dataType:"json",
+				success:function(data){
+					if(data.errcode != 10000){
+						alert(data.msg);
+					}else{
+						layer.msg('已拒绝!',{icon: 6,time:1000});
+						return false;
+					}
+				}
+			});
+		
+	});
+}
+/*密码-修改*/
+function change_password(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-删除*/
+function del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.ajax({
+					url:"<{:U('delLog')}>",
+					type:"post",
+					data:{id:id},
+					dataType:"json",
+					success:function(data){
+						if(data.errcode != 10000){
+							layer.msg(data.msg,{icon:1,time:3000});
+							return false;
+						}else{
+							$(obj).parents("tr").remove();
+							layer.msg('已删除!',{icon:1,time:1000});
+							return false;
+						}
+					}
+				});
+		
+	});
+}
+</script>
+</block>

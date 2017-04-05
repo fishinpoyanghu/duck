@@ -1,0 +1,157 @@
+﻿<extend name="Tool@Index:index" />
+<block name="title">利率日志</block>
+<block name="header"></block>
+<block name="aside"></block>
+<block name="content">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 利率日志 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="deal_task()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 执行利率任务</a></span> <span class="l"> <a href="javascript:;"  class="btn btn-primary radius">上次执行任务结束时间是:<{$task.end_time}>  </a> <a href="javascript:;"  onclick="cleal_task()"   class="btn btn-primary radius">清除所有任务利率 （测试用）</a>  </span> </div>  
+	 
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="60">任务id</th>
+				<th width="60">用户</th>
+				<th width="70">基础利率</th>
+ 				<th width="50">哈士奇利率</th>
+ 				<th width="80">围栏利率</th>
+				<th width="80">机器产出动物量</th>
+				<th width="80">机器利率</th>
+  				<th width="130">时间</th>
+				<th width="100">蛋数量</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist name="list" id="vo">
+			<tr class="text-c">
+				<td><input type="checkbox" value="1" name=""></td>
+				<td><{$vo.task_id}></td>
+				<td><{$vo.realname}></td>
+				<td><{$vo.base_rate}></td> 
+				<td><{$vo.dog_rate}></td>
+ 				<td><{$vo.enclosure_rate}></td>
+ 				<td><{$vo.machine_animal}></td>
+ 				<td><{$vo.machine_rate}></td>
+ 			 
+  				<td class="text-l"><{$vo.time}></td>
+				<td class="td-manage"><{$vo.all_currency}></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+</block>
+
+<block name="js">
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__LIB__/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__LIB__/lib/My97DatePicker/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__LIB__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>-->
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,1,2,4,]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			//table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+/*用户-添加*/
+function deal_task(){
+	   layer.confirm('确认要执行任务吗？',function(index){ 
+	   	layer.load();
+	   	layer.msg('正在执行任务');
+		$.post("<{:U('Tool/Index/runrate')}>",{id:1},function(data){
+			layer.closeAll();
+			if(data.code!=0){
+				layer.alert(data.msg);
+				return false;		
+			}
+			layer.alert('已经执行完毕!'); 
+		},'json') 
+		 
+	});
+	
+}
+
+function cleal_task(){
+	   layer.confirm('确认要执行清除任务吗？',function(index){ 
+	   	layer.load();
+	   	layer.msg('正在执行任务');
+		$.post("<{:U('Tool/Index/clearrunrate')}>",{id:1},function(data){
+			layer.closeAll();
+			if(data.code!=0){
+				layer.alert(data.msg);
+				return false;		
+			}
+			layer.alert('已经执行完毕!'); 
+		},'json') 
+		 
+	});
+	
+}
+ 
+
+//jQuery.post(url,data,success(data, textStatus, jqXHR),dataType)
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-停用*/
+function member_stop(obj,id){
+	layer.confirm('确认要停用吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+		$(obj).remove();
+		layer.msg('已停用!',{icon: 5,time:1000});
+	});
+}
+
+/*用户-启用*/
+function member_start(obj,id){
+	layer.confirm('确认要启用吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+		$(obj).remove();
+		layer.msg('已启用!',{icon: 6,time:1000});
+	});
+}
+
+/*用户-编辑*/
+function dog_edit(title,url,id,w,h){
+	layer_show(title,url,w,h,1);
+}
+/*密码-修改*/
+function change_password(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-删除*/
+function dog_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){ 
+		$.post("<{:U('Tool/Index/dogdel')}>",{id:id},function(data){
+			$(obj).parents("tr").remove();
+			layer.msg('已删除!',{icon:1,time:1000});
+		});
+		 
+	});
+}
+</script>
+</block>

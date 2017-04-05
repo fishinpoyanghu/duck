@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天鹅城</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,minimal-ui"><!-- viewport 后面加上 minimal-ui 在safri 体现效果 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">		<!-- iphone safri 全屏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">	<!-- iphone safri 状态栏的背景颜色 -->
+    <meta name="apple-mobile-web-app-title" content="天鹅城">		<!-- iphone safri 添加到主屏界面的显示标题 -->
+    <meta name="format-detection" content="telphone=no, email=no">	<!-- 禁止数字识自动别为电话号码 -->
+    <meta name="renderer" content="webkit">				<!-- 启用360浏览器的极速模式(webkit) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">		<!-- 是针对一些老的不识别viewport的浏览器，列如黑莓 -->
+    <meta name="MobileOptimized" content="320">			<!-- 微软的老式浏览器 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">	<!-- 禁止百度转码 -->
+    <meta name="screen-orientation" content="portrait">	<!-- uc强制竖屏 -->
+    <meta name="browsermode" content="application">		<!-- UC应用模式 -->
+    <meta name="full-screen" content="yes">				<!-- UC强制全屏 -->
+    <meta name="x5-orientation" content="portrait">		<!-- QQ强制竖屏 -->
+    <meta name="x5-fullscreen" content="true">			<!-- QQ强制全屏 -->
+    <meta name="x5-page-mode" content="app">			<!-- QQ应用模式 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="msapplication-TileColor" content="#000"> 		<!-- Windows 8 磁贴颜色 -->
+    <meta name="msapplication-TileImage" content="icon.png">	<!-- Windows 8 磁贴图标 -->
+    <link rel="Shortcut Icon" href="__PUBLIC__/fuguiji/favicon.ico">		<!-- 浏览器tab图标 -->
+    <link rel="apple-touch-icon" href="__PUBLIC__/fuguiji/images/icon.jpg">				<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+    <link rel="apple-touch-icon" sizes="72x72" href="__PUBLIC__/fuguiji/images/icon.jpg">	<!-- iPad，72x72 像素  -->
+    <link rel="apple-touch-icon" sizes="114x114" href="__PUBLIC__/fuguiji/images/icon.jpg">	<!-- Retina iPhone 和 Retina iTouch，114x114 像素 -->
+
+    <link rel="stylesheet" href="__PUBLIC__/fuguiji/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/fuguiji/css/style.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/home/popup.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/home/home.css">
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/loign/login.css">
+</head>
+<body>
+<div id="page" class="page">
+    <div class="home-page home">
+        <!--滚动公告-->
+        <div class="notice"> <em>(点我查看完整公告)</em>
+            <div> <span>规则更新通知：</span> </div>
+        </div>
+        <div class="userBox"> <img class="bg" src="__PUBLIC__/fuguiji/images/farm/userBox.png" alt="">
+            <section style="line-height: 59px;">
+                <div class="myheadImg" style="background-image: url(__PUBLIC__/fuguiji/images/home/portrait/portrait-man.png);"></div>
+                <!--todo: 两个button不要换行-->
+                <!--todo: 按钮带提示标志 添加.tips-->
+                <button class="chickmail tips"></button>
+                <button class="gamseet"></button>
+                <div class="item clearfix">
+                    <div class="item-content">
+                        <p class="name"> </p>
+                        <i class="dataEdit"> </i>
+                        <p class="clm clm-l round"> </p>
+                        <p class="clm clm-r round"> </p>
+                    </div>
+                </div>
+            </section>
+            <img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine"> <img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine"> </div>
+        <section class="chart"> <img style="display: block;width: 38%;left: 57%;" src="__PUBLIC__/fuguiji/images/home/title.png" alt="" class="chart-title"> <img src="__PUBLIC__/fuguiji/images/home/board.png" alt="" class="board">
+            <div id="LineChart" _echarts_instance_="1487564255011" style="-webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0);">
+                <div style="position: relative; overflow: hidden; width: 276px; height: 220px;">
+                    <div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 276px; height: 220px; user-select: none;"></div>
+                    <canvas width="552" height="440" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 276px; height: 220px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+                    <canvas width="552" height="440" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 276px; height: 220px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+                </div>
+                <span class="subtext">&nbsp;</span><span class="publicSubtext">数据加载中</span></div>
+            <button class="yellowBtn"><span>进入天鹅城</span></button>
+        </section>
+        <div class="home-menus clearfix" style="width:100%;">
+            <!--todo 按钮选中效果添加.cur-->
+            <button class="changeCenter"></button>
+            <button class="log"></button>
+            <button class="PY"></button>
+            <button class="rule"></button>
+
+        </div>
+    </div>
+    <div class="popup" id="notice" style="display:none;">
+        <div class="popfloor" style="height: 386.15px; top: 90.9249px;">
+            <div class="list-form1">
+                <div class="border-form">
+                    <ul>
+
+                        <li>
+                            <div class="none"></div>
+                            <div class="note-title"><div class="tip">&nbsp;</div><div class="title">规则更新通知：</div><div class="date">2016.11.29</div></div>
+                            <div class="note-context">
+                                <div style="">1、天鹅城游戏所有玩家都是300只小鹅起步，为什么有的人收获满满，有的人却碌碌无为！你想成为游戏中的超级玩家吗？希望小编整理的游戏攻略能对你起到帮助。。
+                                    2、游戏中的围栏可以抵挡来自野兽的攻击，玩家每推荐10个好友可以增加围栏等级一级，围栏共4级，每一级可以增加0.1%的生产率收获，四级攻击增加0.4%生产率收获。
+                                    3、满50位好友可获得超级孵化机，把鹅蛋放入孵化机，第二天可以根据自己的生产率，孵化出相应数量的小鹅来，孵化机里的鹅蛋可以随时取出交易，不受任何的限制。
+                                    4、游戏中可以购买小狗来提升自己养鹅场的生成率，初次拥有小狗需消耗100只小鹅。1级小狗可以提升0.05%的生产率，2级小狗可以提升0.10%生产率，3级小狗可以提升0.15%生产率，以此类推。小狗的最高等级为9级，满级的小狗共可以提升0.45%的生产率。
+小狗从注册算起，每隔30天可以免费升级一次，玩家也可以用小鹅直接升级小狗，小狗的等级越高升级成功率越低，7~9级升级失败小狗会将为1级。
+
+                                    5、小狗从注册的那天算起，每隔30天可以免费升级一次（免费升级的成功率和正常升级的成功率一致）。
+                                    6、超级孵化机能存放鹅蛋的数量上限为18000。</div>
+                            </div>
+                        </li>
+
+                        
+
+                        
+                        
+
+                    </ul>
+                </div>
+            </div>
+            <div class="popup-title">公告</div>
+            <a class="close-btn noticeBtn"></a>
+        </div>
+    </div>
+    <div class="popup" id="qiaobao" style="display:none;">
+        <div class="popfloor">
+            <div class="list-form" style="background: none;">
+                <div class="qb-title">
+                    <div class="q-num">
+                        <img src="/Public/fuguiji/images/home/q-jine.png" alt="">
+                        <span class="yellow">余额：</span>
+                        <span class="red">0.00</span>
+                    </div>
+                    <div class="qb-btn">
+                        <a href="cz.html"><img src="/Public/fuguiji/images/home/cz-btn.png" style="float:left;" alt=""></a>
+                        <a href="tx.html"><img src="/Public/fuguiji/images/home/tx-btn.png" style="float:right;" alt=""></a>
+                    </div>
+                </div>
+                <div class="cz-info">
+                    <div class="cz-title">
+                        <a class="cur" href="javascript:">充值记录</a>
+                        <a href="javascript:">提现记录</a>
+                    </div>
+                    <div class="cz-con">
+                        <ul class="cz-list cz">
+                            
+                        </ul>
+                        <ul class="cz-list tk" style="display: none;">
+						<!--
+                            <li><span>提现300.0元</span><span>2016-06-23 15:14</span></li>
+                            <li><span>提现300.0元</span><span>2016-06-23 15:14</span></li>
+                            <li><span>提现300.0元</span><span>2016-06-23 15:14</span></li>
+                            <li><span>提现300.0元</span><span>2016-06-23 15:14</span></li>
+                            <li><span>提现300.0元</span><span>2016-06-23 15:14</span></li>-->
+				
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-title mail-title">我的钱包</div>
+            <a class="close-btn mailBtn"></a> </div>
+    </div>
+    <div class="popup" id="mail" style="display:none;">
+        <div class="popfloor">
+            <div class="list-form">
+                <div class="border-form">
+                    <ul>
+                        <li>
+                            <div class="none"></div>
+                            <div class="note-title"><div class="chick">&nbsp;</div><div class="title">首次注册得1只小天鹅</div><div class="date">2017.02.16</div></div>
+                            <div class="note-context"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup-title mail-title">收件箱</div>
+            <a class="close-btn mailBtn"></a> </div>
+    </div>
+    <div class="popup" id="gameRule" style="display:none;">
+        <div class="popfloor">
+            <div class="list-form">
+                <div class="border-form">
+                    <ul>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">1</div>
+                                    <div class="kd type"></div>
+                                </div>
+                                <div>开池： 点击开池再点击要开的池上，小天鹅数量满足条件就可以开池成功（青池300，金池3000）。</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">2</div>
+                                    <div class="zy type"></div>
+                                </div>
+                                <div> 增养：增养就是把仓库里天鹅放进池中，选择增养工具，点击已开的池，弹出对话框输入增养数量 点击确定 完成增养。</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">3</div>
+                                    <div class="fh type"></div>
+                                </div>
+                                <div>孵化：选择要孵化且已开的池，孵化出小天鹅。（若孵化池中到达最大数量上限而天鹅蛋没有用完，可再次到其他池中孵化）。</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">4</div>
+                                    <div class="sh type"></div>
+                                </div>
+                                <div>收获：选择收获工具 点击要收获的池中 将池里的天鹅扣除开池最低额度全部收回到仓库里。</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">5</div>
+                                    <div class="fhj type"></div>
+                                </div>
+                                <div> 孵化机：仓库里的天鹅蛋可以放入孵化机中，随时可以取出，放在孵化机里的天鹅蛋可以在每天拆分时获得收益，收益比例等同于每天的拆分率。超级孵化机里生产的是小天鹅，您可以每天在机器里点击收获小天鹅，将小天鹅放入仓库。</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">6</div>
+                                    <div class="ds type"></div>
+                                </div>
+                                <div> 打扫：进入好友农场选择打扫工具，为好友打扫可以获得相应的天鹅蛋回到仓库。
+</div>
+                            </div>
+                        </li>
+
+                          <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">7</div>
+                                    <div class="wl type"></div>
+                                </div>
+                                <div>围栏：围栏可以抵挡野兽攻击，总共四级，每一级可以围栏可以抵挡0.1%的损失。
+
+
+</div>
+                            </div>
+                        </li>
+                            <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">8</div>
+                                    <div class="xg type"></div>
+                                </div>
+                                <div>小狗有9个等级，通过升级小狗可以提高每天鹅生蛋的数量。
+
+
+</div>
+                            </div>
+                        </li>
+                            <li>
+                            <div class="rule">
+                                <div>
+                                    <div class="mun">9</div>
+                                    <div class="egg type"></div>
+                                </div>
+                                <div>系统每次拆分完之后会会根据池里所养的天鹅数量生产相应数量的天鹅蛋。当鹅蛋生产时方格上会冒出鹅蛋泡泡。每天您需要点击泡泡让鹅蛋放入仓库否则当天生产的蛋会被第二天所生产的蛋覆盖。
+
+
+</div>
+                            </div>
+                        </li>
+                        <!--
+                        <li>
+                          <div class="rule">
+                            <div>
+                              <div class="mun">6</div>
+                              <div class="ds type"></div>
+                            </div>
+                            <div>进入好友农场，选择打扫工具，在游戏屏幕中点击后，会有扫把扫地的动画，如果好友今日收获鹅蛋，为好友打扫可以获得相应的鹅蛋回到仓库。</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="rule">
+                            <div>
+                              <div class="mun">7</div>
+                              <div class="wl type"></div>
+                            </div>
+                            <div>围栏可以抵挡野兽攻击，总共四级，每一级围栏可以抵挡0.1%的攻击损失。</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="rule">
+                            <div>
+                              <div class="mun">8</div>
+                              <div class="xg type"></div>
+                            </div>
+                            <div>小狗设置9个等级，通过升级小狗等级可以提升每日鹅生蛋的数量。</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="rule">
+                            <div>
+                              <div class="mun">9</div>
+                              <div class="egg type"></div>
+                            </div>
+                            <div>系统每次拆分完后，会根椐方格里所养的天鹅数量产生相应数量的鹅蛋，当鹅蛋产生时方格上方会冒出鹅蛋泡泡。每天您需要点击泡泡让鹅蛋进入仓库，否则当天产生的鹅蛋会被第二天的鹅蛋覆盖。</div>
+                          </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="popup-title rule-title">游戏规则说明</div>
+            <a class="close-btn ruleBtn"></a> </div>
+    </div>
+    <div class="popup" id="portrait" style="display:none;">
+        <div class="popfloor">
+            <div class="list-form" style="height: 242px;">
+                <div class="border-form">
+                    <div class="portrait">
+                        <div class="active">&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <!--<div>&nbsp;</div>
+                        <div>&nbsp;</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="popup-title rule-title">头像选择</div>
+            <a class="close-btn portraitBtn"></a> <a class="confirm-btn selectBtn"></a> </div>
+    </div>
+    <div class="alert"  id="gameSet" style="display:none;">
+        <div class="game-set">
+            <div class="on bgmusic-btn"><a class="on bgmusic-ball"></a></div>
+            <div class="on sound-btn"><a class="on sound-ball"></a></div>
+            <a class="close-btn gameSetBtn"></a> <a class="only-confirm logoutBtn"></a> </div>
+    </div>
+    <div class="alert"  id="changePassword" style="display:none;">
+        <div class="password-board">
+            <div class="context">
+                <div>
+                    <input type="password" name="oldPassword" placeholder="旧密码"/>
+                </div>
+                <div>
+                    <input type="password" name="newPassword" placeholder="新密码"/>
+                </div>
+                <div>
+                    <input type="password" name="confirmPassword" placeholder="确认密码"/>
+                </div>
+            </div>
+            <a class="close-btn closePasswordBtn"></a> <a class="only-confirm confirmChangeBtn"></a> </div>
+    </div>
+    <div class="alert"  id="chickMarket" style=" display:none;">
+        <div class="alert-board">
+            <div class="context">
+                <div class="icon"></div>
+                <div class="text">敬请期待</div>
+            </div>
+            <a class="only-confirm"></a> </div>
+    </div>
+    <div class="alert alert-msg"  id="alertMsg" style="display:none;">
+        <div class="alert-board msg-board">
+            <div class="context">
+                <div class="text">您填写的信息有误，请注意检查~</div>
+            </div>
+            <a class="only-confirm"></a> </div>
+    </div>
+</div>
+
+<section class="shade" style="display: none;">
+    <!--todo:我的商城-->
+    <div class="content storage shops" style="display: none">
+        <div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> <img
+                src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png"
+                                                                                               class="title-r" alt=""> <em>商城</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <ul class="show">
+            <!--todo：列表项固定-->
+            <li class="number"><i class="ico chick"></i>
+                <div class="content">
+                    <p class="name">小天鹅</p>
+                    <em id="animalPrice"></em>
+                    <em class="chicksNum"></em></div>
+                <button class="redListBtn" id="buyAnimal"><span>购买一只</span></button>
+            </li>
+            <li class="number"><i class="ico egg"></i>
+                <div class="content">
+                    <p class="name">饲料</p>
+                    <em id="feedProce"></em>
+                    <em class="eggsNum"></em></div>
+                <button class="redListBtn" id="buyFeed"><span>购买一袋</span></button>
+            </li>
+          
+            <li class="number"><i class="ico machine"></i>
+                <div class="content">
+                    <p class="name">帮好友买鹅</p>
+                    <em id="actricePrice"></em>
+                    <em class="eggsNum"></em></div>
+                <button class="redListBtn" id="buyPrice"><span>购买一只</span></button>
+            </li>
+			<li class="number"><i class="ico machine"></i>
+                    <div class="content">
+                        <p class="name">购买鹅蛋</p>
+                        <em id="actricePrice">市场价/个</em>
+                        <em class="eggsNum"></em></div>
+                    <button class="redListBtn" id="goumaijidan"><span>去购买</span></button>
+                </li>
+           
+    </div>
+
+    <div class="content friend-list" style="display:none;">
+        <div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> <img
+                src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png"
+                                                                            class="title-r" alt=""> <em>好友列表</em>
+        </div>
+        <i class="close"></i><i class="bottom"></i>
+        <ul class="show">
+        </ul>
+        <!--<button class="yellowBtn" id="quickClean"><span>一键打扫</span></button>-->
+       <button class="emw-code emw-open"><span>我的二维码</span></button>
+            <button class="yellowBtn" id="count"><span>直推人数</span></button>
+    </div>
+</section>
+<!--通用弹层-->
+<div class="login-alert login-alert-msg" id="xxx" style="display:none;">
+    <div class="login-alert-board msg-board">
+        <div class="context">
+            <div class="text">这里是你自定义的内容</div>
+        </div>
+        <a class="only-confirm"></a>
+    </div>
+</div>
+<!--好友列表-->
+<!--<section class="shade" style="display:none;">-->
+    <!---->
+<!--</section>-->
+<!--游戏规则弹层-->
+<!--<div class="popup" id="gameRule" style="display:none;">-->
+    <!--<div class="popfloor" style="height: 386.15px; top: 90.9249px;">-->
+        <!--<div class="list-form">-->
+            <!--<div class="border-form">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">1</div>-->
+                                <!--<div class="kd type"></div>-->
+                            <!--</div>-->
+                            <!--<div>点击开地，点击要开发的地块上，只要天鹅数量够就开地成功（金地3000只鹅，普通地300只鹅），否则开地失败。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">2</div>-->
+                                <!--<div class="zy type"></div>-->
+                            <!--</div>-->
+                            <!--<div>增养就是把仓库里的鹅放进鹅圈,选择增养工具，点击已经开垦鹅圈，弹出增养对话框，输增加鹅的数量，点击“确定”，这块地上完成增养。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">3</div>-->
+                                <!--<div class="fh type"></div>-->
+                            <!--</div>-->
+                            <!--<div>选择孵化工具，点击您要孵化的方格，随所您所有的鹅蛋都会在该方格孵化成天鹅（如果鹅蛋数量超过方格养鹅上限，孵化后多出来的鹅蛋将继续保留在仓库中，您可以在其它方格孵化）。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">4</div>-->
+                                <!--<div class="sh type"></div>-->
+                            <!--</div>-->
+                            <!--<div>选择收获工具，点击要收获的地块鹅群，该鹅群的数量除了最低限度外的其他天鹅都会收回到您的仓库里，完成收获。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">5</div>-->
+                                <!--<div class="fhj type"></div>-->
+                            <!--</div>-->
+                            <!--<div>仓库的鹅蛋可以随时放入孵化机，而孵化机里的鹅蛋可以随时取出。放进孵化机的鹅蛋可以在每天拆分时产生收益，收益比例等于每天拆分比例。超级孵化机生产的是天鹅，您可以每天在机器里点击收获天鹅，天鹅将进入仓库。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">6</div>-->
+                                <!--<div class="ds type"></div>-->
+                            <!--</div>-->
+                            <!--<div>进入好友农场，选择打扫工具，在游戏屏幕中点击后，会有扫把扫地的动画，如果好友今日收获鹅蛋，为好友打扫可以获得相应的鹅蛋回到仓库。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">7</div>-->
+                                <!--<div class="wl type"></div>-->
+                            <!--</div>-->
+                            <!--<div>围栏可以抵挡野兽攻击，总共四级，每一级围栏可以抵挡0.1%的攻击损失。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">8</div>-->
+                                <!--<div class="xg type"></div>-->
+                            <!--</div>-->
+                            <!--<div>小狗设置9个等级，通过升级小狗等级可以提升每日鹅生蛋的数量。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="rule">-->
+                            <!--<div>-->
+                                <!--<div class="mun">9</div>-->
+                                <!--<div class="egg type"></div>-->
+                            <!--</div>-->
+                            <!--<div>系统每次拆分完后，会根椐方格里所养的天鹅数量产生相应数量的鹅蛋，当鹅蛋产生时方格上方会冒出鹅蛋泡泡。每天您需要点击泡泡让鹅蛋进入仓库，否则当天产生的鹅蛋会被第二天的鹅蛋覆盖。</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="popup-title rule-title">游戏规则说明</div>-->
+        <!--<a class="close-btn ruleBtn"></a>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="filter">
+  <!--  <div class="tuiguang"><input id="tuiguang" value ></input></div> -->
+	<div id="code">	
+		<textarea id="tuiguang" cols="20" rows="2" style="width:100%;background-color:orange" value>
+  </textarea>
+	</div>
+			
+	<div>
+	<!--
+	<textarea id="tuiguang" style="background-color:orange;color:#fff; width:100%;height:30px; margin-top:70px;" row="2" value ></textarea>
+	
+    <img src="/Public/fuguiji/images/home/emw.png" alt="" class="code">
+	-->
+    <section class="chart">
+        <button class="emw-code emw-close"><span>返回</span></button>
+    </section>
+</div> 
+<script src="__PUBLIC__/fuguiji/js/jquery-1.7.2.min.js"></script>
+<script src="__PUBLIC__/fuguiji/js/echarts.js"></script>
+<script src="__PUBLIC__/fuguiji/js/function.js"></script>
+<script src="__PUBLIC__/fuguiji/js/user.js"></script>
+<script src="__PUBLIC__/fuguiji/js/global.js"></script>
+<script src="__PUBLIC__/fuguiji/js/home.js"></script>
+<script src="//cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+<script>
+
+
+    $(function (){
+			$.ajax({
+            url:host + "/User/getUser",
+            type:"post",
+            data:{token:userInfo.token},
+            dataType:"json",
+			async: false,
+            success:function(data){
+                if(data.errcode != 10000){
+                    alertMsg(data.msg);
+                }else{
+                   sessionStorage.setItem('userInfo',JSON.stringify(data.result[0]));
+                }
+            }
+        });
+		var u = 'http://' + window.location.hostname + '/index.php/Index/index/user/'+userInfo.account;
+		console.log($('#code'))
+		$('#code').qrcode(u);
+		$('#tuiguang').val(u);
+		$.ajax({
+            url:host + "/All/getNotice",
+            type:"get",
+            dataType:"json",
+			async: false,
+            success:function(data){
+                if(data.errcode != 10000){
+                    alertMsg(data.msg);
+                }else{
+					$('.note-title .title').text(data.result[0].title);
+					$('.note-title .date').text(data.result[0].date);
+					$('.notice div span').text(data.result[0].title);
+					$('.note-context div').text(data.result[0].content);
+                }
+
+            }
+        });
+        $.ajax({
+            url:host + "/Tool/getPrice",
+            type:"post",
+            data:{token:userInfo.token},
+            dataType:"json",
+			async: false,
+            success:function(data){
+                if(data.errcode != 10000){
+                    alertMsg(data.msg);
+                }else{
+//                chicken = {"data":data.result};
+                    sessionStorage.setItem('market', JSON.stringify(data));
+                }
+
+            }
+        });
+//		$.ajax({
+//          url:host + "/User/getResources",
+//          type:"post",
+//          data:{token:userInfo.token},
+//          dataType:"json",
+//          success:function(data){
+//              if(data.errcode != 10000){
+//                  alertMsg(data.msg);
+//              }else{
+//                  sessionStorage.setItem('userInfo', JSON.stringify(data.result[0]));
+//                  //$('#num-in').text(data.result[0].feed);
+//					$('.clm-r').text(data.result[0].animal_count);
+//					$('.clm-l').text(data.result[0].currency);
+//              }
+//          }
+//      });
+
+		$('.logoutBtn').click(function(){
+			$.ajax({
+				url:host + "/User/outLogin",
+				type:"post",
+				data:{token:userInfo.token},
+				dataType:"json",
+				async: true,
+				success:function(data){
+					if(data.errcode != 10000){
+						alertMsg(data.msg);
+					}else{
+	//                chicken = {"data":data.result};
+						var url = "<{:U('Index/index')}>";
+						window.location.href=url;
+					}
+
+				}
+			});
+		});
+        var marketData = JSON.parse(sessionStorage.getItem('market'));
+        var  rateList = [0,222,125,223,123,0,0];
+        var myChart = echarts.init(document.getElementById('LineChart'));
+        var option = {
+//      	dataRange:{
+////      		show:true,
+//          	splitNumber:10
+//          },
+            grid:{
+                x:16, y:40, x2:16, y2:20,
+                borderWidth:'0',
+                borderColor:'transparent'
+            },
+            axis:{
+                axisLine:{
+                    lineStyle:{
+                        color:'#ffcfba'
+                    }
+                }
+            },
+//	                tooltip : {
+//	                    trigger: 'axis'
+//	                },
+//	            calculable : true,
+            calculable:false,//控制
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLine:{
+                        lineStyle:{
+                            color:'#ffcfba',
+                            width:3
+                        }
+                    },
+                    axisTick:{
+                        inside:true,
+                        lineStyle:{
+                            color:'#ffcfba',
+                            width:1,
+                        }
+                    },
+                    splitLine:{//间隔线
+//	                            show:false,
+                        lineStyle:{
+                            color:'#ffcfba',
+//	                                type:'dashed',
+                            type:'dotted'
+                        }
+                    },
+                    boundaryGap : false,
+                    //todo:X轴
+//                    data : ['07.03','07.04','07.05','07.06','07.07','07.08','07.09']
+                    data : marketData.date
+                    // data : dates
+                }
+            ],
+            yAxis : [
+                {
+                	 splitNumber:1,
+                	 min:1,
+                	 max:5
+//                  show:false,
+                }
+            ],
+            
+            series : [
+                //线段一
+                {
+                    name:'基础利率：',
+                    type:'line',
+                    smooth:true,//平滑
+                    itemStyle: {
+                        normal: {
+                            label:{//标记
+                                show:true,
+                                textStyle:{
+                                    color:'#FF0000',
+                                    fontSize:'14',
+                                    width:'1'
+                                }
+                            },
+                            lineStyle:{
+                                type:'dotted'
+                            },
+                            areaStyle: {
+                                color:'rgba(254,135,80,0.15)',
+                                type: 'default'
+                            }
+                        }
+                    },
+                    //todo：X轴对应数据
+//                    data:[180, 400, 100, 300, 460, 400, 500],
+                     data : marketData.price,
+                   // data: marketData.baseprice,
+                    symbol:'emptyCircle'
+                },
+                 {
+                    name:'基础利率',
+                    type:'line',
+                    smooth:true,//平滑
+                    itemStyle: {
+                        normal: {
+                            label:{//标记
+                                show:true,
+                                textStyle:{
+                                    color:'#436EEE',
+                                    fontSize:'14',
+                                    width:'2'
+                                }
+                            },
+                            lineStyle:{
+                            	
+                                type:'dashed'
+                            },
+                            areaStyle: {
+                                color:'rgba(254,135,80,0.15)',
+                                type: 'default'
+                            }
+                        }
+                    },
+                    //todo：X轴对应数据
+//                    data:[180, 400, 100, 300, 460, 400, 500],
+                    
+                    data: marketData.baseprice,
+                     symbol:'emptyCircle'
+                }
+            ]
+       };
+        // console.log(marketData.price);
+        myChart.setOption(option);
+        $('#LineChart').append('<span class="subtext">最新利率：'+marketData.price[marketData.price.length-1]+'</span>');
+        $('#LineChart').append('<span class="publicSubtext">基础利率：'+marketData.baseprice[marketData.price.length-1]+'%</span>');
+
+        
+		
+        $(".ruleBtn").click(function(){
+            $("#gameRule").hide();
+        });
+        $(".only-confirm").click(function(){
+            $("#chickMarket").hide();
+        });
+        $(".yellowBtn").click(function(){
+            var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var token = userInfo.token;
+            var url = "<{:U('Index/farm')}>?token="+token;
+            window.location.href=url;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        //处理页面显示业务
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(!userInfo.nickname) userInfo.nickname = "注册会员";
+        $('.item-content .name').text(userInfo.nickname);
+
+        if(!userInfo.currency) userInfo.currency = 0;
+        $('.item-content .round:eq(0)').text(userInfo.currency);
+
+        if(!userInfo.animal_count) userInfo.animal_count = 0;
+//      $('.item-content .round:eq(1)').text(22);
+        $('.item-content .round:eq(1)').text(userInfo.all_animal);
+
+        $(".gamseet").click(function () {
+            $("#gameSet").show();
+        });
+        $(".close-btn").click(function () {
+            $(this).parent().parent().hide();
+        });
+//      $(".chickmail").click(function () {
+//			$.ajax({
+//				url:host + "/User/getWallet",
+//				type:"post",
+//				data:{token:userInfo.token},
+//				dataType:"json",
+//				async: true,
+//				success:function(data){
+//					if(data.errcode != 10000){
+//						alertMsg(data.msg);
+//					}else{
+//						$('.q-num .red').text(data.result[0].money);
+//						$('.cz-con .cz').empty();
+//						$('.cz-con .tk').empty();
+//						$(data.result[0].recharge).each(function(){
+//							
+//							$('.cz').append("<li><span>充值"+this.prize+"元</span><span>"+this.date+"</span></li>");
+//						});
+//						$(data.result[0].drawing).each(function(){
+//							
+//							$('.tk').append("<li><span>提现"+this.prize+"元</span><span>"+this.date+"</span></li>");
+//						});
+//					}
+//
+//				}
+//			});
+//          $("#qiaobao").show();
+//      });
+        $(".myheadImg").click(function () {
+//          $("#portrait").show();
+        });
+
+        $(".portrait>div").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+        $('.dataEdit,.chickmail').click(function(){
+            var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var token = userInfo.token;
+//          return;
+            var url = "<{:U('Index/user')}>?token="+token;
+            window.location.href=url;
+        });
+		$('#goumaijidan').click(function(){
+			window.location.href = "./buy.html";
+		});
+    });
+</script>
+<!--<audio src="__PUBLIC__/fuguiji/music/bg.mp3" preload="" loop></audio>-->
+</body>
+</html>

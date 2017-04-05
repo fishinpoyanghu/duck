@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>天鹅城</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,minimal-ui">
+		<!-- viewport 后面加上 minimal-ui 在safri 体现效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!-- iphone safri 全屏 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- iphone safri 状态栏的背景颜色 -->
+		<meta name="apple-mobile-web-app-title" content="天鹅城">
+		<!-- iphone safri 添加到主屏界面的显示标题 -->
+		<meta name="format-detection" content="telphone=no, email=no">
+		<!-- 禁止数字识自动别为电话号码 -->
+		<meta name="renderer" content="webkit">
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="HandheldFriendly" content="true">
+		<!-- 是针对一些老的不识别viewport的浏览器，列如黑莓 -->
+		<meta name="MobileOptimized" content="320">
+		<!-- 微软的老式浏览器 -->
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<!-- 禁止百度转码 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- uc强制竖屏 -->
+		<meta name="browsermode" content="application">
+		<!-- UC应用模式 -->
+		<meta name="full-screen" content="yes">
+		<!-- UC强制全屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- QQ应用模式 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="msapplication-TileColor" content="#000">
+		<!-- Windows 8 磁贴颜色 -->
+		<meta name="msapplication-TileImage" content="icon.png">
+		<!-- Windows 8 磁贴图标 -->
+		<link rel="Shortcut Icon" href="__PUBLIC__/fuguiji/favicon.ico">
+		<!-- 浏览器tab图标 -->
+		<link rel="apple-touch-icon" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon" sizes="72x72" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- iPad，72x72 像素  -->
+		<link rel="apple-touch-icon" sizes="114x114" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- Retina iPhone 和 Retina iTouch，114x114 像素 -->
+		<link rel="stylesheet" href="__PUBLIC__/fuguiji/css/reset.css">
+		<link rel="stylesheet" href="__PUBLIC__/fuguiji/css/style.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/chickensLog/log.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/loign/login.css">
+	</head>
+
+	<body>
+		<div id="page" class="page">
+			<div class="chickensLog">
+				<header>
+					<div class="header-name">
+						<div class="header_box" style="background-image: url(&quot;__PUBLIC__/fuguiji/images/home/portrait/portrait-chick.png&quot;);"> </div>
+						<!--<div class="leaf">ds西瓜</div>-->
+					</div>
+					<div class="log-deal-with"> <img src="__PUBLIC__/fuguiji/images/pop/deal-with.png">
+						<a href="javascript:history.back(-1);"><img class="black_2" src="__PUBLIC__/fuguiji/images/pop/deal-bnt.png"></a>
+					</div>
+					<div class="log-deal-top-text"> <img src="__PUBLIC__/fuguiji/images/pop/deal-Manteng.png"> <img src="__PUBLIC__/fuguiji/images/pop/chickens.png">
+						<div class="log-text-top"></div>
+					</div>
+				</header>
+				<section class="log-main">
+					<div class="log-package">
+						<div class="log-content clearfix log_content_1" style="display:;">
+							<div class="log-head">
+								<ul class="clearfix log-1">
+									<li>
+										<p>新增天鹅蛋</p>
+									</li>
+									<li>
+										<p>基础生长倍数</p>
+									</li>
+									<li>
+										<p>哈士奇生长倍数</p>
+									</li>
+									<li>
+										<p>围栏扣除生长倍数</p>
+									</li>
+									<li>
+										<p>实际生长倍数</p>
+									</li>
+									<li>
+										<p>时间</p>
+									</li>
+								</ul>
+							</div>
+							<table class="table-log">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="log-content clearfix log_content_2" style="display:none;">
+							<div class="log-head">
+								<ul class="clearfix log-2">
+									<li>
+										<p>好友ID</p>
+									</li>
+									<li>
+										<p>天鹅蛋数量</p>
+									</li>
+									<li>
+										<p>打扫日期</p>
+									</li>
+								</ul>
+							</div>
+							<table class="table-log">
+							</table>
+						</div>
+						<div class="log-content clearfix log_content_3" style="display:none;">
+							<div class="log-head">
+								<ul class="clearfix log-3">
+									<li>
+										<p>孵化数量</p>
+									</li>
+									<li>
+										<p>地块编号</p>
+									</li>
+									<li>
+										<p>地块类型</p>
+									</li>
+									<li>
+										<p>孵化时间</p>
+									</li>
+								</ul>
+							</div>
+							<table class="table-log">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="log-content clearfix log_content_4" style="display:none;">
+							<div class="log-head">
+								<ul class="clearfix log-3">
+									<li>
+										<p>数量</p>
+									</li>
+									<li>
+										<p>地块编号</p>
+									</li>
+									<li>
+										<p>地块类型</p>
+									</li>
+									<li>
+										<p>时间</p>
+									</li>
+								</ul>
+							</div>
+							<table class="table-log">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div id="total_profit" class="flip">
+							<!--<button class="upper">　</button>
+							<span class="number">1/1</span>
+							<button class="lower">　</button>-->
+							<div class="sum">
+								<ul>
+									<li>
+										<span class="dasao_profit">0</span>
+										<p>打扫收益</p>
+									</li>
+									<li>
+										<span class="total_produce_egg">0</span>
+										<p>总生产天鹅蛋</p>
+									</li>
+									<li>
+										<span class="hatch_profit">0</span>
+										<p>孵化机收益</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="log-sidebar">
+						<ul>
+							<li data-tab="1" class="no-nth-log1"> </li>
+							<li data-tab="2" class="nth-log2"> </li>
+							<li data-tab="3" class="nth-log3"> </li>
+							<li data-tab="4" class="nth-log4"> </li>
+						</ul>
+					</div>
+				</section>
+			</div>
+			<section class="shade" style="display: none">
+				<!--todo: 收获提示确认-->
+				<div class="content min error" style="display: none">
+					<div class="flex-box">
+						<div class="f-l"></div>
+						<div class="flex"></div>
+						<div class="f-r"></div>
+					</div>
+					<p>出错啦！</p>
+					<br>
+					<button class="yellowBtn"><span>确认</span></button>
+					<i class="bottom"></i> </div>
+				<div class="register" style="display: none;height: 100%"> <img src="__PUBLIC__/fuguiji/images/window/register.png" alt=""> </div>
+			</section>
+		</div>
+		<!--<audio src="music/bg.mp3" preload="" loop></audio>-->
+
+		<!--2017-2-25更新-->
+		<div class="login-alert login-alert-msg" id="xxx" style="display:none;">
+			<div class="login-alert-board msg-board">
+				<div class="context">
+					<div class="text">这里是你自定义的内容</div>
+				</div>
+				<a class="only-confirm"></a>
+			</div>
+		</div>
+		<!--好友列表-->
+		<section class="shade" style="display:none;">
+			<div class="content friend-list" style="display:none;">
+				<div class="title"><img src="images/window/title-bg.png" class="title-c" alt=""> <img src="images/window/left_y.png" class="title-l" alt=""> <img src="images/window/right_y.png" class="title-r" alt=""> <em>好友列表</em>
+				</div>
+				<i class="close"></i><i class="bottom"></i>
+				<ul class="show">
+				</ul>
+				<button class="yellowBtn" id="quickClean"><span>一键打扫</span></button>
+				<button class="yellowBtn" id="invitation_friend"><span>邀请伙伴</span></button>
+			</div>
+		</section>
+		<script src="__PUBLIC__/fuguiji/js/jquery-1.7.2.min.js"></script>
+		<script src="__PUBLIC__/fuguiji/js/function.js"></script>
+		<script src="__PUBLIC__/fuguiji/js/global.js"></script>
+		<script>
+			$(function() {
+				var userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+				getRateLog();
+				gethistorylIst()
+				function gethistorylIst(){
+					$.ajax({
+						url: host + "/User/gethistory",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.errcode == 10000) {
+								$('#total_profit .dasao_profit').html(data.result[0].dasao);
+								$('#total_profit .total_produce_egg').html(data.result[0].egg);
+								$('#total_profit .hatch_profit').html(data.result[0].machine_animal);
+							} else {
+								alert(data.msg);
+							}
+						},
+						error: function(data) {}
+
+					});
+				}
+				//				cleanlog();
+				//				addanimallog();
+				//生长记录
+				function getRateLog() {
+					$('.log-package .log_content_1 .table-log tbody').html('');
+					$.ajax({
+						url: host + "/User/getRateLog",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.errcode == 10000) {
+								var trHtml = '';
+								$.each(data.result, function(i, n) {
+									trHtml += '<tr class="log-tr1"><td>' +
+										n.all_currency  //新增鸡蛋
+										+'</td><td>' +
+										n.base_rate +
+										'</td><td>' +
+										n.dog_rate +
+										'</td><td>' +
+										n.enclosure_rate+
+										'</td><td>' +
+										n.shiji_rate +
+										'</td><td>' +
+										n.time +
+										'</td></tr>';
+								});
+								$('.log-package .log_content_1 .table-log tbody').html(trHtml);
+
+							} else {
+								alert(data.msg);
+							}
+						},
+						error: function(data) {}
+
+					});
+				}
+				//打扫日志
+				function cleanlog() {
+					$('.log-package .log_content_2 .table-log').html('');
+					$.ajax({
+						url: host + "/User/cleanlog",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: 'json',
+						success: function(data) {
+							if(data.errcode == 10000) {
+								var trHtml = '';
+								$.each(data.result, function(i, n) {
+									trHtml += '<tr class="log-tr4"><td>' +
+										n.account //新增鸡蛋
+										+
+										'</td><td>' +
+										n.rate +
+										'</td><td>' +
+										n.create_time +
+										'</td></tr>';
+								});
+								$('.log-package .log_content_2 .table-log').html(trHtml);
+							} else {
+								alert(data.msg);
+							}
+						},
+						error: function(data,result) {
+						}
+
+					});
+				}
+				//				孵化记录
+				function hatcherylog() {
+					$('.log-package .log_content_3 .table-log tbody').html('');
+					$.ajax({
+						url: host + "/User/hatcherylog",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.errcode == 10000) {
+								var trHtml = '';
+								$.each(data.result, function(i, n) {
+									trHtml += '<tr class="log-tr4"><td>' +
+										n.number //新增鸡蛋
+										+
+										'</td><td>' +
+										n.farm_id +
+										'</td><td>' +
+										(n.farm_type=='1'?'绿地':'金地') +
+										'</td><td>' +
+										n.create_time +
+										'</td></tr>';
+								});
+								$('.log-package .log_content_3 .table-log tbody').html(trHtml);
+							} else {
+								alert(data.msg);
+								$('.log-package .log_content_3 .table-log tbody').html('');
+							}
+						},
+						error: function(data) {}
+
+					});
+				}
+				//增养记录
+				function addanimallog() {
+					$('.log-package .log_content_4 .table-log tbody').html('');
+					$.ajax({
+						url: host + "/User/addanimallog",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.errcode == 10000) {
+								var trHtml = '';
+								$.each(data.result, function(i, n) {
+									trHtml += '<tr class="log-tr4"><td>' +
+										n.number //新增鸡蛋
+										+
+										'</td><td>' +
+										n.farm_id +
+										'</td><td>' 
+										+(n.farm_type=='1'?'绿地':'金地')
+										+
+										'</td><td>' +
+										n.create_time +
+										'</td></tr>';
+								});
+								$('.log-package .log_content_4 .table-log tbody').html(trHtml);
+							} else {
+								alert(data.msg);
+								$('.log-package .log_content_4 .table-log tbody').html('');
+							}
+						},
+						error: function(data) {}
+
+					});
+				}
+
+				$(".log-sidebar ul li").click(function() {
+					var index = $(this).attr('data-tab') - 1;
+					for(var i = 1; i <= 4; i++) {
+						$(".log-sidebar ul li").eq(i - 1).attr("class", "nth-log" + i);
+					}
+					$(this).attr("class", "no-nth-log" + (index + 1));
+
+					$(".log-package .log-content").eq(index).siblings(".log-content").hide().end().show();
+					switch(index) {
+						case 0:
+							console.log('生长记录');
+							getRateLog();
+							break;
+						case 1:
+							console.log('打扫记录');
+							cleanlog();
+							break;
+						case 2:
+							console.log('孵化记录');
+							hatcherylog();
+							break;
+						case 3:
+							console.log('增养记录');
+							addanimallog();
+							break;
+					}
+				})
+				//  $(".log-sidebar ul li").each(function (index){
+				//        $(this).click(function (){
+				//             for(var i=1;i<=4;i++)
+				//             {
+				//               $(".log-sidebar ul li").eq(i-1).attr("class","nth-log"+i);
+				//             }
+				//          $(this).attr("class","no-nth-log"+(index+1));
+				//
+				//          $(".log-package .log-content").eq(index).siblings(".log-content").hide().end().show();
+				//        });
+				//  });
+
+			});
+		</script>
+	</body>
+
+</html>

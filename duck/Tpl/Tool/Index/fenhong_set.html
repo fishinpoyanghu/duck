@@ -1,0 +1,312 @@
+﻿<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__LIB__/lib/html5.js"></script>
+<script type="text/javascript" src="__LIB__/lib/respond.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__HUI__/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__HUI__/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__LIB__/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__LIB__/lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="__HUI__/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__HUI__/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>基本设置</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 基本设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add" method="post" action="<{:U('Tool/Index/fenhong_set')}>">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本设置</span></div>
+			<div class="tabCon">
+				<!-- <div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>天鹅价格：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="animalPrice" placeholder="单位:天鹅蛋" value="<{$Think.config.animalPrice}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>饲料价格：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="feedProce" placeholder="单位:天鹅蛋" value="<{$Think.config.feedProce}>" class="input-text">
+					</div>
+				</div> -->
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>激活用户需要鹅的数量：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="actricePrice" placeholder="单位:天鹅" value="<{$Think.config.actricePrice}>" class="input-text">
+					</div>
+				</div>
+				<!-- <div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>天鹅生产时间：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="broodCycle" placeholder="小时为单位" value="<{$Think.config.broodCycle}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>天鹅生命周期：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="lifeCycle" placeholder="天为单位" value="<{$Think.config.lifeCycle}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>天鹅总产蛋个数：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="broodNumber" placeholder="个为单位" value="<{$Think.config.broodNumber}>" class="input-text">
+					</div>
+				</div>
+
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>1-30天,每天产蛋数量：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="januaryBroodNumber" placeholder="个为单位" value="<{$Think.config.januaryBroodNumber}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>31-60天,每天产蛋数量：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="FebruaryBroodNumber" placeholder="个为单位" value="<{$Think.config.FebruaryBroodNumber}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>61-90天,每天产蛋数量：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="MarchBroodNumber" placeholder="个为单位" value="<{$Think.config.MarchBroodNumber}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>直推奖金：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						每直推激活用户<input type="text" id="" name="subordinateNumber" placeholder="个为单位" value="<{$Think.config.subordinateNumber}>" class="input-small">个,获得
+						<input type="text" id="" name="rewardNumber" placeholder="个为单位" value="<{$Think.config.rewardNumber}>" class="input-small">天鹅蛋
+					</div>
+				</div> -->
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>直推奖励(动物数量)：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						一代<input type="text" id="" name="oneLevelBonus" placeholder="百分比" value="<{$Think.config.oneLevelBonus}>" class="input-small">
+						<!-- 二代<input type="text" id="" name="twoLevelsBonus" placeholder="百分比" value="<{$Think.config.twoLevelsBonus}>" class="input-small">
+						三代<input type="text" id="" name="threeLevelsBonus" placeholder="百分比" value="<{$Think.config.threeLevelsBonus}>" class="input-small"> -->
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>提现倍数（多小倍可以提现）：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="tixian_price" placeholder="元为单位" value="<{$Think.config.tixian_price}>" class="input-text">
+					</div>
+				</div>
+				<!-- <div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>提现手续费：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="fee" placeholder="元为单位" value="<{$Think.config.fee}>" class="input-text">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>每天最多购买天鹅个数：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<input type="text" id="" name="buyCycleMostNumber" placeholder="单位:个" value="<{$Think.config.buyCycleMostNumber}>" class="input-text">
+					</div>
+				</div> -->
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>开地需要蛋数：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						绿地<input type="text" id="" name="green_farm" placeholder="个为单位" value="<{$Think.config.green_farm}>" class="input-small">个 
+						金地<input type="text" id="" name="gold_farm" placeholder="个为单位" value="<{$Think.config.gold_farm}>" class="input-small">个
+					</div>
+				</div>
+				 
+
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 围栏利率：(扣除利率)</label>
+					<div class="formControls col-xs-8 col-sm-9">
+					    0级<input type="text" id="" name="enclosure_rate_zero" placeholder="百分比" value="<{$Think.config.enclosure_rate_zero}>" class="input-small">
+						1级<input type="text" id="" name="enclosure_rate_one" placeholder="百分比" value="<{$Think.config.enclosure_rate_one}>" class="input-small">
+						2级<input type="text" id="" name="enclosure_rate_two" placeholder="百分比" value="<{$Think.config.enclosure_rate_two}>" class="input-small">
+						3级<input type="text" id="" name="enclosure_rate_three" placeholder="百分比" value="<{$Think.config.enclosure_rate_three}>" class="input-small">
+						 
+						4级不用扣 
+					</div>
+				</div>
+		 
+			 	<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>狗最高级:</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="dog_maxlev" placeholder="个数" value="<{$Think.config.dog_maxlev}>" class="input-small">
+					</div>
+				</div>
+				
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>购买孵化机用的动物数量:</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="machine_animal_num" placeholder="个数" value="<{$Think.config.machine_animal_num}>" class="input-small">
+					</div>
+				</div>
+
+		     	<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>孵化机最大量:</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="machine_max_eggnum" placeholder="个数" value="<{$Think.config.machine_max_eggnum}>" class="input-small">
+					</div>
+				</div>
+			<!-- 	<div class="row cl"> 不要孵化机了。把孵化机看做一块地去算。。
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>孵化机利率（百分比）:</label>
+				<div class="formControls col-xs-8 col-sm-9"> 
+				  <input type="text" id="" name="machine_rate" placeholder="个数" value="<{$Think.config.machine_rate}>" class="input-small">
+				</div>
+			</div> -->
+
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>转蛋/鹅需要的手续费（百分比）:</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="transfer_percent" placeholder="百分比" value="<{$Think.config.transfer_percent}>" class="input-small">
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>一键打扫(需要多小鹅):</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="one_clean" placeholder="需要多小只动物" value="<{$Think.config.one_clean}>" class="input-small">
+					</div>
+				</div>
+				 <div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>打扫利润百分比:</label>
+					<div class="formControls col-xs-8 col-sm-9"> 
+					  <input type="number" id="" name="clean_rate" placeholder="" value="<{$Think.config.clean_rate}>" class="input-small">
+					</div>
+				</div>
+
+				<!--<div class="row">-->
+					<!--<div class="col-xs-offset-3 col-xs-7 ">-->
+  					  <!--奖金代数和利率 百分之10 就写10,百分之5就写5,百分之0.5就写0.5,用逗号分割,分割几次就获得几代奖金-->
+  				  	<!--</div>-->
+					<!--<div class="col-xs-offset-3 col-xs-7 ">-->
+  					  <!--10,8,5,2,0.5 就是获得第一代的百分之10,获得第二代的百分之8,获得第三代的百分之5,获得第四代的百分之2-->
+  				  	<!--</div>-->
+				<!--</div>-->
+
+			 	<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>系统状态：</label>
+					<div class="formControls col-xs-8 col-sm-9">
+						<label>开    <input type="radio"   name="sysclose"  <eq name="sysclose" value="0">checked="checked"</eq>   value="0" ></label>   
+						<label>关<input type="radio"  name="sysclose"  value="1"  <eq name="sysclose" value="1">checked="checked"</eq> ></label>
+						<!-- 二代<input type="text" id="" name="twoLevelsBonus" placeholder="百分比" value="<{$Think.config.twoLevelsBonus}>" class="input-small">
+						三代<input type="text" id="" name="threeLevelsBonus" placeholder="百分比" value="<{$Think.config.threeLevelsBonus}>" class="input-small"> -->
+					</div>
+				</div> 
+			</div>
+
+
+
+
+
+
+		</div><!--end-->
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__LIB__/lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+
+});
+
+/*帮助-启用*/
+function to_help(obj,id){
+	layer.confirm('你确定要继续吗？',function(index){
+
+		$.post("<{:U('Tool/Index/system_set')}>",{to_switch_time:id},function(data){
+			window.location.href=window.location.href;
+		});
+
+
+	});
+}
+
+/*每日提现限制-开关*/
+function limit_help_get(obj,id){
+	layer.confirm('你确定要继续吗？',function(index){
+
+		$.post("<{:U('Tool/Index/system_set')}>",{limit_help_get_switch:id},function(data){
+			window.location.href=window.location.href;
+		});
+
+
+	});
+}
+/*每日帮助限制-开关*/
+function limit_help_to(obj,id){
+	layer.confirm('你确定要继续吗？',function(index){
+
+		$.post("<{:U('Tool/Index/system_set')}>",{limit_help_to_switch:id},function(data){
+			window.location.href=window.location.href;
+		});
+
+
+	});
+}
+/*用户烧伤-开关*/
+	function economic_foam_switch(obj,id){
+
+		layer.confirm('你确定要继续吗？',function(index){
+
+			$.post("<{:U('Tool/Index/system_set')}>",{economic_foam_switch:id},function(data){
+				window.location.href=window.location.href;
+			});
+
+		});
+
+	}
+/*入场券-开关*/
+function ticket_switch(obj,id){
+
+	layer.confirm('你确定要继续吗？',function(index){
+
+		$.post("<{:U('Tool/Index/system_set')}>",{ticket_switch:id},function(data){
+			window.location.href=window.location.href;
+		});
+
+	});
+
+}
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
