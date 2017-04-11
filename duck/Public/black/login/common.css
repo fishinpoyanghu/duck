@@ -1,0 +1,97 @@
+body{background:#282B32; }
+
+
+/********* By Lcj Start **********/
+
+/* 提示 开始 */
+#show_alert{width:100%; height:100%; position:fixed; top:0; left:0; z-index:1000000; background:rgba(0,0,0,.6); overflow:hidden; display:none; }
+#show_alert div{width:360px; margin:auto; margin-top:15%; background:#fff; }
+#show_alert div h5{width:100%; height:36px; line-height:36px; background:#eee; }
+#show_alert div h5 b{margin-left:15px; font-size:1.1em; color:#888; }
+#show_alert div p{width:80%; min-height:40px; line-height:20px; margin:auto; margin-top:15px; margin-bottom:10px; }
+#show_alert div p span{color:#555; font-size:14px; }
+#show_alert div dd{width:100%; height:38px; line-height:30px; text-align:center; padding-bottom:5px; }
+#show_alert div dd button{width:80px; height:30px; font-size:1.2em; border:0; outline:none; background:#fff; color:#555; }
+#show_alert div dd button:hover{color:red; }
+
+#show_big_img{width:100%; height:100%; position:fixed; top:0; left:0; z-index:1000001; background:rgba(0,0,0,.7); overflow:hidden; display:none; }
+#show_big_img dd{width:100%; height:100%; overflow:hidden; background-size:auto 96% !important; }
+/* 提示 结束 */
+
+/* 分页 开始 */
+#pager{margin-top:40px; margin-bottom:20px; }
+#pager ul{width:700px; margin:auto; clear:both; overflow:hidden; text-align:center; }
+#pager ul li{display:inline-block; width:auto; border:0; line-height:35px; margin-right:30px; font-size:13px; color:grey; }
+#pager ul li a{font-size:14px; }
+/* 分页 结束 */
+
+/********* By Lcj End **********/
+
+
+.topDIV{width:1200px; height:50px; margin:auto; clear:both; }
+.topDIV .logoA{width:207px; height:42px; float:left; background:url(../images/logo.png) no-repeat; background-size:100% 100%; position:relative; top:3px; }
+.topDIV .exitA{width:30px; height:30px; float:right; background:url(../images/exit.png) no-repeat; background-size:100% 100%; position:relative; top:11px; }
+.topDIV .exitA:hover{background:url(../images/exiton.png) no-repeat;  }
+
+nav{width:100%; height:80px; background:#3D3E43 url(../images/menubg.png) no-repeat center center; }
+nav ul{width:1200px; margin:auto; clear:both; }
+nav ul a{width:92px; height:78px; float:left; text-align:center; border-bottom:2px solid #3D3E43; }
+nav ul a b{font-size:14px; color:#ddd; position:relative; top:50px; transition-duration:.4s; }
+nav ul a:hover{border-bottom:2px solid #4CD863; }
+nav ul a:hover b{color:#4CD863; transition-duration:.4s; }
+nav ul .indexA{background:url(../images/icon1.png) no-repeat center 12px; }
+nav ul .indexA:hover{background:url(../images/icon1on.png) no-repeat center 12px; }
+nav ul .offerA{background:url(../images/icon2.png) no-repeat center 12px; }
+nav ul .offerA:hover{background:url(../images/icon2on.png) no-repeat center 12px; }
+nav ul .applyA{background:url(../images/icon3.png) no-repeat center 12px; }
+nav ul .applyA:hover{background:url(../images/icon3on.png) no-repeat center 12px; }
+nav ul .scrambleA{background:url(../images/icon4.png) no-repeat center 13px; }
+nav ul .scrambleA:hover{background:url(../images/icon4on.png) no-repeat center 13px; }
+nav ul .personalA{background:url(../images/icon5.png) no-repeat center 16px; }
+nav ul .personalA:hover{background:url(../images/icon5on.png) no-repeat center 16px; }
+nav ul .pdcoinA{background:url(../images/icon6.png) no-repeat center 12px; }
+nav ul .pdcoinA:hover{background:url(../images/icon6on.png) no-repeat center 12px; }
+nav ul .teamA{background:url(../images/icon7.png) no-repeat center 15px; }
+nav ul .teamA:hover{background:url(../images/icon7on.png) no-repeat center 15px; }
+nav ul .activeA{background:url(../images/icon8.png) no-repeat center 15px; }
+nav ul .activeA:hover{background:url(../images/icon8on.png) no-repeat center 15px; }
+nav ul .incomeA{background:url(../images/icon9.png) no-repeat center 12px; }
+nav ul .incomeA:hover{background:url(../images/icon9on.png) no-repeat center 12px; }
+nav ul .newsA{background:url(../images/icon10.png) no-repeat center 15px; }
+nav ul .newsA:hover{background:url(../images/icon10on.png) no-repeat center 15px; }
+nav ul .leavemsgA{background:url(../images/icon11.png) no-repeat center 14px; }
+nav ul .leavemsgA:hover{background:url(../images/icon11on.png) no-repeat center 14px; }
+nav ul .prizeA{background:url(../images/icon12.png) no-repeat center 12px; }
+nav ul .prizeA:hover{background:url(../images/icon12on.png) no-repeat center 12px; }
+nav ul .gameA{background:url(../images/icon13.png) no-repeat center 12px; }
+nav ul .gameA:hover{background:url(../images/icon13on.png) no-repeat center 12px; }
+
+footer{width:100%; height:100px; margin-top:60px; background:#3B3E45; text-align:center; }
+footer img{width:105px; height:42px; position:relative; top:27px; }
+footer b{margin-left:10px; font-size:14px; color:#CACBD0; position:relative; top:20px; }
+
+.table_list{width:1200px; min-height:200px; margin:auto; margin-top:20px; background:#2F3543; }
+.table_list table caption{line-height:50px; text-align:left; }
+.table_list table caption b{margin-left:26px; font-size:21px; color:#0084E9; }
+.table_list table caption b.ab{color:#73D528; }
+.table_list table thead tr{height:50px; background:#474E5E; }
+.table_list table thead tr th{font-size:17px; color:#838BA0; }
+.table_list table tbody tr{height:50px; border-bottom:1px solid #3A404E; }
+.table_list table tbody tr td{font-size:14px; color:#838BA0; }
+.table_list table tbody tr td.ctd{font-size:16px; color:#F2AD38; }
+.table_list table tbody tr td.ctd2{font-size:16px; color:#2EDB4D; }
+.table_list table tbody tr td.ctd2 i{font-size:13px; color:#2EDB4D; }
+.table_list table tbody tr td a.seea{padding:5px 20px; border-radius:16px; background:#27AE61; font-size:14px; color:#fff; }
+.table_list table tbody tr td a.seea:hover{background:#208C4E; box-shadow: 0 0 10px #27AE61; }
+
+.pathC{width:1200px; margin:auto; margin-top:30px; color:#858A9E; }
+.pathC,.pathC a{font-size:14px; color:#858A9E; }
+.pathC a:hover{color:#30D94C; }
+.pages{ font-size:14px; float:right; line-height:32px;}
+.pages  li{color:#969CB2; line-height:32px;}
+.pages   li b{ color:#f60}
+
+.pages  li.rows{ border:none;  float:right;line-height:32px;}
+
+.pages  a { color:#f60;font-size:14px; }
+.pages  .current{color:#969cb2;}
