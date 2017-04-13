@@ -77,106 +77,46 @@ class FarmsController extends CommonController
                 'expired_time'  => $expiredTime
             ));
             if($animalResult){
-                addLog($this->userId,'购买富贵鸡',1,$this->animalPrice);
-                $this->echoJson(10000);
+                addLog($this->userId,'购买天鹅',1,$this->animalPrice);
+                echo json_encode(array('errcode'=>10000,'msg'=>'购买天鹅成功！'));exit;
             }
         }
         $this->echoJson(-1);
     }
 
-    /**
-     * 购买饲料
-     */
-    public function buyFeed()
-    {
-        if(IS_POST){
-            $user = $this->getUser($this->userId);
-            if($user['currency'] < $this->feedProce){//货币是否足够
-                $this->echoJson(-11);
-            }
-            $resutl = M('member')->where(array('id'=>$this->userId))->setDec('currency',$this->feedProce);
-            if($this->isFalse($resutl)){
-                $this->echoJson(-1);
-            }
-            $feedResult = M('member')->where(array('id'=>$this->userId))->setInc('feed',1);
-            if($feedResult){
-                addLog($this->userId,"购买饲料",2,$this->feedProce);
-                $this->echoJson(10000);
-            }
-        }
-        $this->echoJson(-1);
-    }
-    /**
-     * 购买激活码
-     */
-    public function buyActrice()
-    {
-        if(IS_POST){
-            $user = $this->getUser($this->userId);
-            if($user['currency'] < $this->actricePrice){//货币是否足够
-                $this->echoJson(-11);
-            }
-            $resutl = M('member')->where(array('id'=>$this->userId))->setDec('currency',$this->actricePrice);
-            if($this->isFalse($resutl)){
-                $this->echoJson(-1);
-            }
-            $feedResult = M('member')->where(array('id'=>$this->userId))->setInc('action_code',1);
-            if($feedResult){
-                addLog($this->userId,"购买激活码",3,$this->actricePrice);
-                $this->echoJson(10000);
-            }
-        }
-        $this->echoJson(-1);
-    }
-	public function buyDan(){
-		if(IS_POST){
-			$num = I('post.num');
-            $user = $this->getUser($this->userId);
-            $market_price = M('market_price')->where(array('start'=>array('elt',date('Y-m-d'))))->order('start desc')->find();
-			
-			$price = $num * $market_price['price'];
-			if($user['money'] < $price){
-				$this->echoJson(-22);
-			}
-			if(M('member')->where(array('id'=>$this->userId))->setDec('money',$price)){
-				M('member')->where(array('id'=>$this->userId))->setInc('currency',$num);
-			}
-			$this->echoJson(10000);
-			
-		}
-		$this->echoJson(-1);
-	}
+    
+ 
 	public function getPrice(){
 		$market_price = M('market_price')->where(array('start'=>array('elt',date('Y-m-d'))))->order('start desc')->find();
 		$this->echoJson($market_price);
 		
 	}
-    //开地
+    //开池
     public function openFarm(){
         $this->checkGet(array('type'));
-        $type=I('post.type');//1 绿地 2黄地 
+        $type=I('post.type');//1 绿池 2黄池 
         $animal=$type==1?C('green_farm'):C('gold_farm');
         $time = strtotime(date('Y-m-d',time()).' 00:00:00');
         if(!$animal){
-             $this->echoJson('获取地数量异常');
+             $this->echoJson('获取池数量异常');
         }
 
         $user = $this->getUser($this->userId);
        
         if($user['animal_num'] < $animal){//货币是否足够
 
-            $this->echoJson('开地所需天鹅不足。');
+            $this->echoJson('开池所需天鹅不足。');
         }
         
         if($type==1){ 
             $count= M('user_farm')->where(array('userid'=>$this->userId,'type'=>1))->count();
             if($count >= 10  ){
-                $this->echoJson('农场绿地已满');
+                $this->echoJson('农场绿池已满');
             }
         }else{ 
             $count= M('user_farm')->where(array('userid'=>$this->userId,'type'=>2))->count();
             if($count>= 5){
-                $this->echoJson('农场金地已满');
+                $this->echoJson('农场金池已满');
             }
 
         }
@@ -195,29 +135,36 @@ class FarmsController extends CommonController
                 
             ));
         if($farmResult){
-            addLog($this->userId,'开'.$type==1?'绿':'金'.'地',4,$animal);
-            echo json_encode(array('errcode'=>10000,'msg'=>'开地成功！'));exit;
+            addLog($this->userId,'开'.$type==1?'绿':'金'.'池',4,$animal);
+            echo json_encode(array('errcode'=>10000,'msg'=>'开池成功！'));exit;
         }
 
  
         $this->echoJson(-1);
     }
-    //土地孵化鸡蛋
+    //土池孵化鸡蛋
     public function hatchEgg(){
         if(IS_POST){ 
             $this->checkGet(array('id','egg_num'));
             $data = I('post.'); 
             $farm= M('user_farm')->field('id,add_num,num,type')->where(array('id'=>$data['id']))->find();
             if(!$farm){
-                 $this->echoJson('请指定孵化土地！');
+                 $this->echoJson('请指定孵化土池！');
+            }
+            //  $data['egg_num']=(int)$data['egg_num'];
+            if(!is_int($data['egg_num']+0)){
+                $this->echoJson('孵化数量必须是整数');
+            }
+            if($data['egg_num']<1){
+                $this->echoJson('孵化数量必须大于1');
             }
             if($farm['type']==1){
                 if($farm['add_num']+$farm['num']+$data['egg_num']>3000){
-                     $this->echoJson('绿地动物总量不能超过3000');
+                     $this->echoJson('绿池动物总量不能超过3000');
                 }
             }else{
                 if($farm['add_num']+$farm['num']+$data['egg_num']>30000){
-                     $this->echoJson('金地动物总量不能超过30000');
+                     $this->echoJson('金池动物总量不能超过30000');
                 }
             }
             $user= M('member')->field('currency')->where(array('id'=>$this->userId))->find();
@@ -246,7 +193,8 @@ class FarmsController extends CommonController
                 $this->echoJson(-1);
             }*/
            // addLog($this->userId,'孵化蛋蛋',5, $data['egg_num']);
-            $this->echoJson(10000);
+           echo json_encode(array('errcode'=>10000,'msg'=>'孵化成功！'));exit;
+        
         }
 
         $this->echoJson(-1);
@@ -260,13 +208,16 @@ class FarmsController extends CommonController
             if(!$farm){
                 $this->echoJson(-28);
             }
+            if(!is_int($data['animal_num']+0)){
+                $this->echoJson('增养数量必须是整数');
+            }
             if($farm['type']==1){
-                if($farm['add_num']+$farm['num']+$data['egg_num']>3000){
-                     $this->echoJson('绿地动物总量不能超过3000');
+                if($farm['add_num']+$farm['num']+$data['animal_num']>3000){
+                     $this->echoJson('绿池动物总量不能超过3000');
                 }
             }else{
-                if($farm['add_num']+$farm['num']+$data['egg_num']>30000){
-                     $this->echoJson('金地动物总量不能超过30000');
+                if($farm['add_num']+$farm['num']+$data['animal_num']>30000){
+                     $this->echoJson('金池动物总量不能超过30000');
                 }
             }
             $user= M('member')->field('animal_num')->where(array('id'=>$this->userId))->find();
@@ -289,12 +240,12 @@ class FarmsController extends CommonController
             $log['type']=1;
             M('farm_log')->add($log);
             //addLog($this->userId,'增养动物',6, $data['animal_num']);
-            $this->echoJson(10000);
+            echo json_encode(array('errcode'=>10000,'msg'=>'增养天鹅成功！'));exit;
         }
 
         $this->echoJson(-1);
     }
-    //收取指定土地的小鸡跟鸡蛋。。
+    //收取指定土池的小鸡跟鸡蛋。。
     public function getfarmsanimal(){
         if(IS_POST){ 
             $this->checkGet(array('id','type'));
@@ -310,7 +261,7 @@ class FarmsController extends CommonController
                 if($this->isFalse($r1) || $this->isFalse($r2)){
                     $this->echoJson(-1);
                 }
-                addLog($this->userId,'收取小鸡',7, $farm['add_num']);
+                addLog($this->userId,'收取小天鹅',7, $farm['add_num']);
             }
             if($farm['egg_rate']<=0 && $data['type']==2){
                 M('user_farm')->where(array('id'=>$data['id']))->setField('egg_status',2);

@@ -62,6 +62,7 @@ class CommonController extends Controller{
      */
     public function tokenToUserId($token){
         if(!$token) $this->echoJson(-9);
+        if($_SESSION['token']!=$token) $this->echoJson(-9);
         $UID = M('member')->where(array('token'=>$token))->getField('id');
         if(!$UID) $this->echoJson(-9);
         return $UID;

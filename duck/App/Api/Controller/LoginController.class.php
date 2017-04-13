@@ -111,7 +111,7 @@ class LoginController extends CommonController
 
             $result = M('member')->where(array('id'=>$user['id']))->save(array('password'=>md5($data['pwd'])));
             if($result !== false){
-                $this->echoJson(10000);
+                echo json_encode(array('errcode'=>10000,'msg'=>'找回密码成功！'));exit;
             }
             $this->echoJson(-7);
         }
@@ -135,7 +135,7 @@ class LoginController extends CommonController
     public function motifypwd(){
          if(IS_POST){
 //            print_r($_POST);EXIT();
-            $this->checkGet(array('account','oldpwd','newpwd','paypwd'));
+            $this->checkGet(array('account','oldpwd','newpwd'));
  
             $data = I('post.');
             $user = M('member')->field('id,account,password')->where(array('account'=>$data['account']))->find();
@@ -149,9 +149,9 @@ class LoginController extends CommonController
                 $this->echoJson(-2);
             };
             $save['password']=md5($data['newpwd']);
-            $save['highpass']=md5($data['paypwd']);
+          //  $save['highpass']=md5($data['paypwd']);
             M('member')->where(array('account'=>$data['account']))->save($save);
-            $this->echoJson($user);
+            echo json_encode(array('errcode'=>10000,'msg'=>'修改密码成功！'));exit;
         }else{
             $this->echoJson(-1);
         }

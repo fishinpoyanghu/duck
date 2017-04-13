@@ -29,14 +29,31 @@ class ToolController extends CommonController
         }
     }
     public function getPrice(){
+       // $_POST['token']='cede49a52f40707828c097b59801dbed';
+        $this->checkGet(array('token'));
         $list = M('market_price')->where(array('start'=>array('elt',date('Y-m-d'))))->order('start desc')->limit(7)->select();
+        $this->userId = $this->tokenToUserId(I('post.token'));
+        $membermsg=M('member m ')->join(' left join '.C('DB_PREFIX').'dogmsg c on m.dog_lev=c.lev')->field('m.enclosure_lev,c.rate dog_rate')->where('m.id='.$this->userId)->find();
+        $enclosure[4]=0;
+        $enclosure[0]=C('enclosure_rate_zero')?C('enclosure_rate_zero'):0.4; //围栏利率 
+        $enclosure[1]=C('enclosure_rate_one')?C('enclosure_rate_one'):0.3;
+        $enclosure[2]=C('enclosure_rate_two')?C('enclosure_rate_two'):0.2;
+        $enclosure[3]=C('enclosure_rate_three')?C('enclosure_rate_three'):0.1;
+        $dog_rate=$membermsg['dog_rate'] ;
+      
         foreach ($list as $k => $v){
             $date[] = date('m-d',strtotime($v['start']));
             $price[] = $v['price'];
-        }
+            $bprice=$v['price']-$enclosure[$membermsg['enclosure_lev']]+$dog_rate;
+           // echo $bprice,'</br>';
+          //  echo number_format($bprice,3, ".", ","),'</br>';
+           //  echo sprintf("%.2f",substr(sprintf("%.3f", $bprice), 0, -2))  ,'</br>';
+            $baseprice[]=$bprice;
+        } 
         $date = array_reverse($date);
         $price = array_reverse($price);
-        $this->ajaxReturn(array('errcode'=>10000,'date'=>$date,'price'=>$price));
+        $baseprice = array_reverse($baseprice);
+        $this->ajaxReturn(array('errcode'=>10000,'date'=>$date,'price'=>$price,'baseprice'=>$baseprice));
     }
 
     public function getCode($mobile){
@@ -44,8 +61,8 @@ class ToolController extends CommonController
         $code = mt_rand(111111,666666);
         $expirationTime = time() + 30 * 60;
         $content = $code;
-         
-        $content = "您好，您的验证码是{$code}打死不要告诉其他人【富贵鸡】";
+          
+        $content = "您正在重设密码，验证码：{$code}，TEC提醒您注意账号安全【天鹅城】";
         $url='http://utf8.sms.webchinese.cn/'; 
         $rparams['Uid']='tianchenxue';
         $rparams['Key']='608c3096b11003826580';
