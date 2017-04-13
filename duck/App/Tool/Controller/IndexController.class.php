@@ -137,7 +137,10 @@ class IndexController extends CommonController {
         $info = I('post.');
 
         $info['password'] = md5($info['password']);
-
+        if(!$info['highpass']){
+             die("<script>alert('支付密码不能为空');history.go(-1);</script>");
+        }
+        $info['highpass'] = md5($info['highpass']);
 
         $m = M('member');
 
@@ -470,7 +473,7 @@ class IndexController extends CommonController {
 
                 die("<script>alert('用户不存在');history.go(-1);</script>");
             }
-
+            unset($post['account']);
             if($post['password'] == ''){
 
                 unset($post['password']);
@@ -480,6 +483,23 @@ class IndexController extends CommonController {
 
                 $post['password'] = md5($post['password']);
             }
+            if($post['highpass'] != ''){
+
+                $post['highpass'] = md5($post['highpass']);
+            }
+            $post['references']=trim($post['references']);
+            if($post['references'] != ''){
+                if($post['references']==$member['account']){
+                  die("<script>alert('推荐人不能是自己');history.go(-1);</script>");
+                
+                }
+                $account= M('member')->where(array('account'=>$post['references']))->find();
+               if(empty($account)){
+                  die("<script>alert('推荐人账号错误');history.go(-1);</script>");
+                
+                }
+            }
+
             $ret =  M('member')->where(array('id'=>$post['id']))->save($post);
 
             if($ret){
@@ -698,6 +718,7 @@ class IndexController extends CommonController {
     //利益=围栏利率+狗利率+日期利率
     public function runrate(){  
         set_time_limit(0);
+        ignore_user_abort(true); 
         ini_set('max_execution_time', 0);
         ini_set("memory_limit", 1048576000); 
         $add['task_date']=date('Y-m-d',strtotime("-1 day"));
@@ -837,8 +858,17 @@ class IndexController extends CommonController {
         }
     }
 
-   
-     //利率日志
+   public function lateloglist(){
+        $post=I('post.');
+        $count=$post['count']?$post['count']:20;
+        $from=$post['from']?$post['from']:1;
+        $list =M('rate_log l ')->field('l.*,m.realname')->join(' left join gs_member m on m.id=l.userid')->limit(($from-1)*$count,$count)->order('id desc')->select();
+        $allcount=M('rate_log l ')->count();
+        $data['list']=$list;
+        $data['count']=ceil($allcount/$count); 
+        echo json_encode($data); 
+     
+   }
     public function ratelog(){
         $task=M('rate_task')->order('id desc')->find(); 
         $list =M('rate_log l ')->field('l.*,m.realname')->join(' left join gs_member m on m.id=l.userid')->select();
@@ -848,9 +878,116 @@ class IndexController extends CommonController {
         
         
     }
+    public function tasklog(){
+
+       
+        //member_cash_log dogmsg
+        $tasklog = M('rate_task')->order('id desc')->select();
+        $this->assign('list',$tasklog);
+        $this->display();
+
+    } 
+    //重新执行利率任务。
+    public function redealwork(){
+       if(!S('sysclose')){
+            echo json_encode(array('msg'=>'请先关闭系统 !','code'=>1));exit; 
+       }
+      $taskid=$_POST['id']+0;
+      if(!$taskid){
+        echo json_encode(array('msg'=>'数据错误 !','code'=>1));exit; 
+      }
+       $task=M('rate_task')->order('id desc')->field('id,task_date')->find();
+       if($taskid!=$task['id']){
+            echo json_encode(array('msg'=>'参数错误 !','code'=>1));exit; 
+       }
+      
+        $add['task_date']=date('Y-m-d',strtotime("-1 day"));
+        if($task['task_date'] !=$add['task_date']){
+             echo json_encode(array('msg'=>'执行日期错误 !','code'=>1));exit; 
+        }
+        
+      M('rate_task')->where(array('id'=>$taskid))->delete();  
+      M('rate_log')->where(array('task_id'=>$taskid))->delete(); 
+      $this->runrate();
+    }
+
     public function clearrunrate(){
-        M()->execute(' truncate gs_rate_task');
-        M()->execute(' truncate gs_rate_log');
-         echo json_encode(array('msg'=>'任务执行成功 !','code'=>0));exit; 
+        echo json_encode(array('msg'=>'当前接口已停用','code'=>1));exit; 
+       // M()->execute(' truncate gs_rate_task');
+        //M()->execute(' truncate gs_rate_log');
+        // echo json_encode(array('msg'=>'任务执行成功 !','code'=>0));exit; 
+    }
+     
+    public function lotterymsg(){ 
+        $lottery = M('lottery')->select();
+        $this->assign('list',$lottery);
+        $this->display();
+
+    }
+
+     //公告发布
+
+    public function lotteryadd(){ 
+       if(IS_POST){
+           $post = I('post.'); 
+           
+           $percent=M('lottery')->field('sum(percent) as percent')->find();
+            if($percent['percent']+$post['percent']>100){
+                 $this->error('添加失败,所有奖品概率不能大于100');
+            }
+           $ret =  M('lottery')->create($post); 
+           if($ret){ 
+               M('lottery')->add(); 
+               $this->success('添加成功');
+           }else{ 
+               $this->error('添加失败');
+           }
+        }
+
+        $this->display();
+    }
+
+    //狗升级
+    public function lotteryupdate(){ 
+        if(IS_POST){ 
+            $post = I('post.');  
+             
+           $percent=M('lottery')->field('sum(percent) as percent')->where('id!='.$post['id'])->find();
+            if($percent['percent']+$post['percent']>100){
+                 $this->error('添加失败,所有奖品加起来概率不能大于100');
+            }
+
+             $ret =  M('lottery')->save($post); 
+            if($ret){ 
+                $this->success('修改成功');
+            }
+            else{
+                $this->error('修改失败');
+            }
+
+         }
+
+         $lottery = M('lottery')->where(array('id'=>I('get.id')))->find();
+         $this->assign('lottery',$lottery);
+         $this->display();
+    } 
+
+    public function lotterydel(){ 
+        if(IS_POST){ 
+            $r = M('lottery')->where(array('id'=>I('post.id')))->delete(); 
+            if($r){ 
+                $this->success('删除成功');
+            }else{
+
+                $this->error('删除失败');
+            }
+        }
+    }
+    public function lotterylist(){
+         
+        $record= M('lottery_record')->alias('l')->field('l.*,m.nickname')->join(' left join '.C('DB_PREFIX').'member m on m.id=l.userid')->select();
+       // var_dump($record);exit;
+        $this->assign('list',$record); 
+        $this->display();
     }
 }

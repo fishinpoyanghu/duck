@@ -13,12 +13,12 @@ class CommonController extends Controller {
 
 
     public function _initialize(){
-
+    	 header("Content type:text/html;charset=utf-8"); 
         //加载配置
         $config = M('system_config')->where(array('id'=>1))->find();
         $this->assign('config',$config);
 
-        if(!check_admin_login() && ACTION_NAME != "jihuo"){// 还没登录 跳转到登录页面
+        if(!check_admin_login()){// 还没登录 跳转到登录页面
             $this->redirect('/Relay/login');
         }
 
