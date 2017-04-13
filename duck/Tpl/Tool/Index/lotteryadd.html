@@ -1,0 +1,124 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head runat="server">
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__LIB__/lib/html5.js"></script>
+<script type="text/javascript" src="__LIB__/lib/respond.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__HUI__/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__HUI__/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__LIB__/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__LIB__/lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="__HUI__/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__HUI__/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://__LIB__/lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>添加转盘  -</title>
+</head>
+<body>
+<article class="page-container">
+	<form action="<{:U('Tool/Index/lotteryadd')}>" method="post" class="form form-horizontal" id="form-member-add" runat="server">
+		<script type="text/javascript" src="__PUBLIC__/edit/nicEdit.js"></script>
+		<script type="text/javascript">
+			bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+		</script>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>奖品类型：</label>
+			<div class="radio">
+						<label>
+							<input type="radio" name="type" id="optionsRadios4" value="1">
+							实物
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="type" id="optionsRadios5" value="0">
+							鹅
+						</label>
+					</div>
+
+			<!-- <div class="formControls col-xs-8 col-sm-9">
+				<input type="text" readonly="readonly" class="input-text"  value="<{$dogmsg.type}>" placeholder="" >
+			</div> -->
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>奖品名称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  value="" placeholder="" id="name" name="name" >
+			</div>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>获得天鹅：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  value="" placeholder="" id="animal_num" name="animal_num" >
+			</div>
+			 
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>中奖率：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				  
+
+				<input type="text" class="input-text"  value="" placeholder="" id="percent" name="percent" >
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去--> 
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__LIB__/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__LIB__/lib/jquery.validation/1.14.0/messages_zh.min.js"></script> 
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script> 
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script> 
+
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+
+	$("#form-member-add").validate({
+		rules:{
+			content:{
+				required:true,
+				minlength:6,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		/*submitHandler:function(form){
+			$(form).ajaxSubmit(ajax_option);
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}*/
+	});
+
+
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

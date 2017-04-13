@@ -1,0 +1,90 @@
+﻿<extend name="Tool@Index:index" />
+<block name="title">任务列表</block>
+<block name="header"></block>
+<block name="aside"></block>
+<block name="content">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 任务列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<!-- <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="pin_add('添加狗等级','<{:U('Tool/Index/dogadd')}>','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加狗等级</a></span>  </div> -->
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="60">利率id</th>
+				<th width="70">执行用户</th>
+ 				<th width="50">建立时间</th>
+ 				<th width="80">任务日期</th>
+ 				<th width="80">执行最后时间 (忽略)</th>
+ 				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist name="list" id="vo" key="c">
+			<tr class="text-c">
+				<td><input type="checkbox" value="1" name=""></td>
+				<td><{$vo.id}></td>
+				<td><{$vo.username}></td> 
+				<td><{$vo.create_time}></td> 
+				<td><{$vo.task_date}></td>
+				<td><{$vo.end_time}></td>
+ 				 
+ 				<td class="td-manage"> <eq name="c" value="1"> <a title="重新执行任务" href="javascript:;" onclick="redeal_work(this,'<{$vo.id}>','<{$vo.task_date}>')" class="ml-5" style="text-decoration:none"> 重新执行任务</a></eq> </td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+</block>
+
+<block name="js">
+<script type="text/javascript" src="__LIB__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="__LIB__/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__LIB__/lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__LIB__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.js"></script>
+<script type="text/javascript" src="__HUI__/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,1,2,4,]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			//table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+ 
+/*用户-删除*/
+function redeal_work(obj,id,date){
+	layer.confirm('当前操作会重算'+date+'的利率，确认要执行吗？',function(index){ 
+		layer.closeAll();
+		layer.msg('执行任务中。。。')
+		layer.load();
+		$.post("<{:U('Tool/Index/redealwork')}>",{id:id},function(data){
+		 	layer.closeAll();
+			if(data.code!=0){
+				layer.alert(data.msg);
+				return false;		
+			}
+			alert('执行成功');
+			window.location.href=window.location.href
+		},'json');
+		 
+	});
+}
+</script>
+</block>
