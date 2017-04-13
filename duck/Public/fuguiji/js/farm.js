@@ -21,9 +21,14 @@ $(function() {
 				$(".field li").find('.chicken-box').parent().removeClass('canOpen');
 				break;
 			case 'Up':
-				console.log('增养');
+			 	var input_add_num=parseInt(userInfo.animal_num);
+				console.log(input_add_num);
+				$("#input_add_num").val(input_add_num);
 				//				break;
 			case 'hatch':
+			 	var input_hatch_num=parseInt(userInfo.currency);
+			console.log(input_hatch_num);
+				$("#input_hatch_num").val(input_hatch_num);
 				console.log('孵化');
 				$(".field li").removeClass('canOpen');
 				$(".field li").find('.chicken-box').parent().addClass('canOpen');

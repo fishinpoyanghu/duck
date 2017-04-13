@@ -52,8 +52,9 @@ $(function() {
 	$(".log").on('touchstart', function() {
 //		$('.shade').show();
 //		$('.friend-list').show();
-		$('#chickMarket').show();
-		getPartner(1);
+		window.location.href = "./zhuanpan.html";
+//		$('#chickMarket').show();
+//		getPartner(1);
 	});
 	//个人中心
 	$(".PY").on('touchstart', function() {
