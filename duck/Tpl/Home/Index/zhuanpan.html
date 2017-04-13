@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>天鹅城</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,minimal-ui">
+		<!-- viewport 后面加上 minimal-ui 在safri 体现效果 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!-- iphone safri 全屏 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- iphone safri 状态栏的背景颜色 -->
+		<meta name="apple-mobile-web-app-title" content="天鹅城">
+		<!-- iphone safri 添加到主屏界面的显示标题 -->
+		<meta name="format-detection" content="telphone=no, email=no">
+		<!-- 禁止数字识自动别为电话号码 -->
+		<meta name="renderer" content="webkit">
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="HandheldFriendly" content="true">
+		<!-- 是针对一些老的不识别viewport的浏览器，列如黑莓 -->
+		<meta name="MobileOptimized" content="320">
+		<!-- 微软的老式浏览器 -->
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<!-- 禁止百度转码 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- uc强制竖屏 -->
+		<meta name="browsermode" content="application">
+		<!-- UC应用模式 -->
+		<meta name="full-screen" content="yes">
+		<!-- UC强制全屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- QQ应用模式 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="msapplication-TileColor" content="#000">
+		<!-- Windows 8 磁贴颜色 -->
+		<meta name="msapplication-TileImage" content="icon.png">
+		<!-- Windows 8 磁贴图标 -->
+		<link rel="Shortcut Icon" href="__PUBLIC__/fuguiji/favicon.ico">
+		<!-- 浏览器tab图标 -->
+		<link rel="apple-touch-icon" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+		<link rel="apple-touch-icon" sizes="72x72" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- iPad，72x72 像素  -->
+		<link rel="apple-touch-icon" sizes="114x114" href="__PUBLIC__/fuguiji/images/icon.jpg">
+		<!-- Retina iPhone 和 Retina iTouch，114x114 像素 -->
+
+		<link rel="stylesheet" href="__PUBLIC__/fuguiji/css/reset.css">
+		<link rel="stylesheet" href="__PUBLIC__/fuguiji/css/style.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/home/popup.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/home/home.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/loign/login.css">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/fuguiji/css/zhuanpan.css">
+	</head>
+
+	<body>
+
+		<body style="background:#e62d2d;overflow-x:hidden;">
+			<div id="zhuanpan_bg">
+				<!-- 代码 开始 -->
+				<img src="__PUBLIC__/fuguiji/images/zhuanpan/1.png" id="shan-img" style="display:none;" />
+				<img src="__PUBLIC__/fuguiji/images/zhuanpan/2.png" id="sorry-img" style="display:none;" />
+
+				<img class="zhuanpan_title_png" src="__PUBLIC__/fuguiji/images/zhuanpan/zhuanpan_title.png" alt="" />
+				<div class="banner">
+					<div class="turnplate" style="background-image:url(__PUBLIC__/fuguiji/images/zhuanpan/turnplate-bg.png);background-size:100% 100%;">
+						<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+
+						<img class="pointer" src="__PUBLIC__/fuguiji/images/zhuanpan/turnplate-pointer.png" />
+					</div>
+					<div class="zhuanpan_menu">
+						<span onclick="lotteryRun()"></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+			<!--<section class="shade" style="display: none;">-->
+			<!--请求失败返回的弹层-->
+			<div class="login-alert login-alert-msg" id="cleanFriend_alert" style="display:none;">
+				<div class="login-alert-board msg-board">
+					<div class="context">
+						<div class="text">这里是你自定义的内容</div>
+					</div>
+					<a class="only-confirm"></a>
+				</div>
+			</div>
+			<!--请求成功返回的弹层-->
+			<div class="login-alert login-alert-msg" id="returnSucc_alert" style="display:none;">
+				<div class="login-alert-board msg-board">
+					<div class="context">
+						<div class="text">这里是你自定义的内容</div>
+					</div>
+					<a class="only-confirm"></a>
+				</div>
+			</div>
+			<!--</section>-->
+			<script src="__PUBLIC__/fuguiji/js/jquery-1.7.2.min.js"></script>
+			<script src="__PUBLIC__/fuguiji/js/echarts.js"></script>
+			<script src="__PUBLIC__/fuguiji/js/function.js"></script>
+			<script src="__PUBLIC__/fuguiji/js/user.js"></script>
+			<script src="__PUBLIC__/fuguiji/js/global.js"></script>
+			<script src="__PUBLIC__/fuguiji/js/home.js"></script>
+			<script src="//cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/fuguiji/js/awardRotate.js"></script>
+			<script type="text/javascript">
+				var turnplate = {
+					restaraunts: [], //大转盘奖品名称和id
+					colors: [], //大转盘奖品区块对应背景颜色
+					outsideRadius: 192, //大转盘外圆的半径
+					textRadius: 155, //大转盘奖品位置距离圆心的距离
+					insideRadius: 68, //大转盘内圆的半径
+					startAngle: 0, //开始角度
+
+					bRotate: false //false:停止;ture:旋转
+				};
+				$.ajax({
+					url: host + "/User/lottery",
+					type: "post",
+					data: {
+						token: userInfo.token
+					},
+					dataType: "json",
+					async: false,
+					success: function(data) {
+						if(data.errcode != 10000) {
+							//							alertMsg(data.msg);
+							window.location.reload();
+						} else {
+							turnplate.restaraunts = data.result;
+							//							$.each(data.result, function(i, n) {
+							//								turnplate.restaraunts[i] = n.name;
+							//								console.log(n)
+							//							});
+							//							console.log(data.result)
+						}
+					}
+				});
+
+				function lotteryRun() {
+					$.ajax({
+						url: host + "/User/lotteryRun",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						async: false,
+						success: function(data) {
+							if(data.errcode != 10000) {
+								turnplate.bRotate = !turnplate.bRotate;
+								cleanFriend_alert(data.msg)
+							} else {
+								$.each(turnplate.restaraunts, function(i, n) {
+									if(data.id == n.id) {
+										rotateFn(i, n.name);
+										console.log(i)
+									}
+									//									console.log(n)
+								});
+								//								console.log(turnplate.restaraunts)
+								//								console.log(data.id)
+							}
+						}
+					});
+				}
+
+				$(document).ready(function() {
+					//动态添加大转盘的奖品与奖品区域背景颜色
+					//					turnplate.restaraunts = ["50M免费流量包", "10闪币", "谢谢参与", "5闪币", "10M免费流量包", "20M免费流量包", "20闪币 ", "30M免费流量包", "100M免费流量包", "2闪币"];
+					turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF"];
+
+					var rotateTimeOut = function() {
+						$('#wheelcanvas').rotate({
+							angle: 0,
+							animateTo: 2160,
+							duration: 8000,
+							callback: function() {
+								alert('网络超时，请检查您的网络设置！');
+							}
+						});
+					};
+
+					//旋转转盘 item:奖品位置; txt：提示语;
+					var rotateFn = function(item, txt) {
+						var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length * 2));
+						if(angles < 270) {
+							angles = 270 - angles;
+						} else {
+							angles = 360 - angles + 270;
+						}
+						$('#wheelcanvas').stopRotate();
+						$('#wheelcanvas').rotate({
+							angle: 0,
+							animateTo: angles + 1800,
+							duration: 8000,
+							callback: function() {
+								returnSucc_alert('恭喜获得'+txt);
+								turnplate.bRotate = !turnplate.bRotate;
+							}
+						});
+					};
+
+					$('.pointer').click(function() {
+						console.log(turnplate.bRotate)
+						if(turnplate.bRotate) return;
+						turnplate.bRotate = !turnplate.bRotate;
+						lotteryRun();
+						//						setInterval(function() {
+						//							var item = rnd(1, turnplate.restaraunts.length);
+						//							item = 5
+						//							rotateFn(item, turnplate.restaraunts[item - 1]);
+						//						}, 4000)
+						//获取随机数(奖品个数范围内)
+						//					var item = rnd(1, turnplate.restaraunts.length);
+						//					item = 4
+						//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
+						//					rotateFn(item, turnplate.restaraunts[item - 1]);
+					});
+
+					function lotteryRun() {
+						$.ajax({
+							url: host + "/User/lotteryRun",
+							type: "post",
+							data: {
+								token: userInfo.token
+							},
+							dataType: "json",
+							async: false,
+							success: function(data) {
+								if(data.errcode != 10000) {
+									turnplate.bRotate = !turnplate.bRotate;
+									cleanFriend_alert(data.msg)
+								} else {
+									$.each(turnplate.restaraunts, function(i, n) {
+										if(data.id == n.id) {
+											rotateFn(i+1, n.name);
+											console.log(i)
+										}
+										//									console.log(n)
+									});
+									//								console.log(turnplate.restaraunts)
+									//								console.log(data.id)
+								}
+							}
+						});
+					}
+				});
+
+				function rnd(n, m) {
+					var random = Math.floor(Math.random() * (m - n + 1) + n);
+					return random;
+
+				}
+
+				//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
+				window.onload = function() {
+					drawRouletteWheel();
+				};
+
+				function drawRouletteWheel() {
+					var canvas = document.getElementById("wheelcanvas");
+					if(canvas.getContext) {
+						//根据奖品个数计算圆周角度
+						var arc = Math.PI / (turnplate.restaraunts.length / 2);
+						var ctx = canvas.getContext("2d");
+						//在给定矩形内清空一个矩形
+						ctx.clearRect(0, 0, 422, 422);
+						//strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
+						ctx.strokeStyle = "#FFBE04";
+						//font 属性设置或返回画布上文本内容的当前字体属性
+						ctx.font = '16px Microsoft YaHei';
+						for(var i = 0; i < turnplate.restaraunts.length; i++) {
+							var angle = turnplate.startAngle + i * arc;
+							ctx.fillStyle = turnplate.colors[i];
+							ctx.beginPath();
+							//arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
+							ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);
+							ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+							ctx.stroke();
+							ctx.fill();
+							//锁画布(为了保存之前的画布状态)
+							ctx.save();
+
+							//----绘制奖品开始----
+							ctx.fillStyle = "#E5302F";
+							var text = turnplate.restaraunts[i].name;
+							var line_height = 17;
+							//translate方法重新映射画布上的 (0,0) 位置
+							ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+
+							//rotate方法旋转当前的绘图
+							ctx.rotate(angle + arc / 2 + Math.PI / 2);
+
+							/** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
+							if(text.indexOf("M") > 0) { //流量包
+								var texts = text.split("M");
+								for(var j = 0; j < texts.length; j++) {
+									ctx.font = j == 0 ? 'bold 20px Microsoft YaHei' : '16px Microsoft YaHei';
+									if(j == 0) {
+										ctx.fillText(texts[j] + "M", -ctx.measureText(texts[j] + "M").width / 2, j * line_height);
+									} else {
+										ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+									}
+								}
+							} else if(text.indexOf("M") == -1 && text.length > 6) { //奖品名称长度超过一定范围 
+								text = text.substring(0, 6) + "||" + text.substring(6);
+								var texts = text.split("||");
+								for(var j = 0; j < texts.length; j++) {
+									ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+								}
+							} else {
+								//在画布上绘制填色的文本。文本的默认颜色是黑色
+								//measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
+								ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+							}
+
+							//添加对应图标
+							if(text.indexOf("闪币") > 0) {
+								var img = document.getElementById("shan-img");
+								img.onload = function() {
+									ctx.drawImage(img, -15, 10);
+								};
+								ctx.drawImage(img, -15, 10);
+							} else if(text.indexOf("谢谢参与") >= 0) {
+								var img = document.getElementById("sorry-img");
+								img.onload = function() {
+									ctx.drawImage(img, -15, 10);
+								};
+								ctx.drawImage(img, -15, 10);
+							}
+							//把当前画布返回（调整）到上一个save()状态之前 
+							ctx.restore();
+							//----绘制奖品结束----
+						}
+					}
+				}
+
+				function returnSucc_alert(text) {
+					//					$('.shade').show();
+					$('#returnSucc_alert').show();
+					$('#returnSucc_alert').css('z-index', '110');
+					$('#returnSucc_alert').css('top', '0');
+					console.log($('#returnSucc_alert .context .text').html(text))
+				}
+
+				function cleanFriend_alert(text) {
+					$('.shade').show();
+					$('#cleanFriend_alert').show();
+					$('#cleanFriend_alert').css('z-index', '110');
+					$('#cleanFriend_alert').css('top', '0');
+					console.log($('#cleanFriend_alert .context .text').html(text))
+				}
+			</script>
+		</body>
+
+</html>
