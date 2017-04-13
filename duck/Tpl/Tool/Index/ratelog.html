@@ -5,7 +5,7 @@
 <block name="content">
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 利率日志 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="deal_task()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 执行利率任务</a></span> <span class="l"> <a href="javascript:;"  class="btn btn-primary radius">上次执行任务结束时间是:<{$task.end_time}>  </a> <a href="javascript:;"  onclick="cleal_task()"   class="btn btn-primary radius">清除所有任务利率 （测试用）</a>  </span> </div>  
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="deal_task()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 执行利率任务</a></span> <span class="l"> <a href="javascript:;"  class="btn btn-primary radius">上次执行任务结束时间是:<{$task.end_time}>  </a> <!-- <a href="javascript:;"  onclick="cleal_task()"   class="btn btn-primary radius">清除所有任务利率 （测试用）</a>  --> </span> </div>  
 	 
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -92,7 +92,7 @@ function deal_task(){
 	
 }
 
-function cleal_task(){
+/*function cleal_task(){
 	   layer.confirm('确认要执行清除任务吗？',function(index){ 
 	   	layer.load();
 	   	layer.msg('正在执行任务');
@@ -107,7 +107,7 @@ function cleal_task(){
 		 
 	});
 	
-}
+}*/
  
 
 //jQuery.post(url,data,success(data, textStatus, jqXHR),dataType)

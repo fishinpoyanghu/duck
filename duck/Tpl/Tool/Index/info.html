@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码（为空即不修改）：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" placeholder=""  name="password">
 			</div>
@@ -54,6 +54,19 @@
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="<{$member.phone}>" placeholder="" id="mobile" name="phone">
+			</div>
+		</div>
+	    <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>推荐人账号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="<{$member.references}>" placeholder="" id="mobile" name="references">
+			</div>
+		</div>
+		 
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>交易密码（为空即不修改）：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="highpass" name="highpass">
 			</div>
 		</div>
 		<div class="row cl">

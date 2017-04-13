@@ -15,6 +15,7 @@
 				<th width="70">狗等级</th>
  				<th width="50">狗利息</th>
  				<th width="80">升级狗成功率</th>
+ 				<th width="80">升级狗需要数量</th>
   				<th width="130">时间</th>
 				<th width="100">操作</th>
 			</tr>
@@ -25,8 +26,10 @@
 				<td><input type="checkbox" value="1" name=""></td>
 				<td><{$vo.id}></td>
 				<td><{$vo.lev}></td> 
-				<td><{$vo.rate}></td>
- 				<td><{$vo.upgrade_percent}></td>
+				<td><{$vo.rate}></td> 
+				<td><{$vo.upgrade_percent}></td>
+				<td><{$vo.updatedog_num}></td>
+ 				 
   				<td class="text-l"><{$vo.create_time|date="Y-m-d H:i",###}></td>
 				<td class="td-manage"><a title="编辑" href="javascript:;" onclick="dog_edit('修改狗等级','<{:U('Tool/Index/dogupdate',array('id'=>$vo['id']))}>','1','900','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="dog_del(this,'<{$vo.id}>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
