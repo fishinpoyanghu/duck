@@ -50,17 +50,17 @@ $(function() {
 	});
 	//伙伴
 	$(".log").on('touchstart', function() {
-//		$('.shade').show();
-//		$('.friend-list').show();
+		//		$('.shade').show();
+		//		$('.friend-list').show();
 		window.location.href = "./zhuanpan.html";
-//		$('#chickMarket').show();
-//		getPartner(1);
+//				$('#chickMarket').show();
+		//		getPartner(1);
 	});
 	//个人中心
 	$(".PY").on('touchstart', function() {
 		var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 		var token = userInfo.token;
-//		var url = "user.html?token=" + token;
+		//		var url = "user.html?token=" + token;
 		var url = "chickensLog.html?token=" + token;
 		//alert(url);
 		window.location.href = url;
@@ -140,5 +140,5 @@ $(function() {
 			$(".cd-show").find("ul.show").eq(index).show();
 		});
 	});
-
+	
 });

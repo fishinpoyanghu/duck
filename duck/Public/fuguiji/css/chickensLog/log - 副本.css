@@ -1,0 +1,354 @@
+.chickensLog{
+
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: url("../../images/pop/tack-background.png");
+    background-size: 100%;
+}
+.chickensLog header .log-deal-top-text{
+    z-index: 1;
+    width: 100%;
+    top: 2.5%;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+.chickensLog header .log-deal-top-text img:nth-child(2) {
+    z-index: 10;
+    position: absolute;
+    width: 76%;
+    left: 50%;
+    margin-left: -31%;
+    top: 3%;
+}
+.chickensLog header .log-deal-top-text img:first-child{
+    z-index: 11;
+    width: 74%;
+    position: absolute;
+    left: 50%;
+    margin-left: -30%;
+    top: 6.7%;
+}
+.chickensLog header .log-deal-with{
+    z-index: 5;
+}
+.chickensLog header .log-deal-with img:nth-child(2){
+    z-index: 12;
+    position: absolute;
+    left: 10.1%;
+    width: 14%;
+    top: 4.6%;
+}
+.chickensLog .log-deal-with img:first-child{
+    width: 15.7%;
+    position: absolute;
+    top: 1.145656%;
+}
+.chickensLog header .log-text-top{
+    z-index: 23;
+    background: url("../../images/pop/chickens-sign.png") no-repeat;
+    background-size: 100%;
+    width: 37%;
+    position: absolute;
+    height: 10%;
+    left: 50%;
+    top: 5.3%;
+    margin-left: -12%;
+    
+    /*暂时添加，有了图片删掉*/
+       /*width: 30%;
+    float: left;
+    height: 4.97222222rem;
+    background: none;
+    background: url(../../images/home/home-footer.png) no-repeat;
+    background-size: 400%;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    transition-timing-function: cubic-bezier(0, 0.74, 0.52, 1.38);
+    background-position: 66%;*/
+    /*top: 2.3%;*/
+   
+}
+.chickensLog .log-main{
+    /*border: 0.12rem solid #694b21;*/
+    position: absolute;
+    /*background: #e7c55f;*/
+    width: 82%;
+    margin: 3.1rem auto 0rem 3rem;
+    min-height: 29.8rem;
+    border-radius: 1.4rem;
+    bottom: 2.2%;
+    margin-top: 0;
+    min-height: initial;
+    top: 2%;
+}
+.chickensLog .log-main .log-package{
+    z-index: 1;
+    width: 100%;
+    /* min-height: 25.9rem; */
+    background: url("../../images/pop/pop-panel21.png") no-repeat;
+    background-size: 100% 100%;
+    border-radius: 1.4rem;
+    overflow: hidden;
+    padding-top: 3.4rem;
+    /*height: 98.3%;*/
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    top: -20px;
+    max-height: 630px;
+}
+.chickensLog .log-foot{
+    width: 100%;
+    height: 16%;
+    background: url("../../images/pop/log-foot.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+}
+
+.chickensLog .log-main .log-sidebar{
+    position: absolute;
+    /*top:11%;*/
+    top:19%;
+}
+.log-main .log-sidebar ul{
+    width: 5rem;
+}
+.page{
+   /* overflow-y: scroll;*/
+}
+
+.nth-log1{
+    background: url("../../images/pop/1.png") no-repeat;
+    background-size: 52% 100%;
+}
+.nth-log2{
+    background: url("../../images/pop/2.png") no-repeat;
+    background-size: 52% 100%;
+}
+.nth-log3{
+    background: url("../../images/pop/3.png") no-repeat;
+    background-size: 52% 100%;
+}
+.nth-log4{
+    background: url("../../images/pop/4.png") no-repeat;
+    background-size: 52% 100%;
+}
+.no-nth-log1{
+    background: url("../../images/pop/1-1.png") no-repeat;
+    background-size: 52% 100%;
+}
+.no-nth-log2{
+    background: url("../../images/pop/2-1.png") no-repeat;
+    background-size: 52% 100%;
+}
+.no-nth-log3{
+    background: url("../../images/pop/3-1.png") no-repeat;
+    background-size: 52% 100%;
+}
+.no-nth-log4{
+    background: url("../../images/pop/4-1.png") no-repeat;
+    background-size: 52% 100%;
+}
+.log-sidebar{
+    position: absolute;
+    left: -2.5rem;
+}
+.log-sidebar ul li{
+    overflow: hidden;
+    height: 5.277rem;
+    margin-top: 0.2rem;
+    border-radius: 0.5rem;
+}
+.log-sidebar ul li:after{
+    content: '';
+    opacity: 0;
+}
+.log-sidebar ul li[data-tab='1']:after{
+    background: url("../../images/pop/1.png");
+}
+.log-sidebar ul li[data-tab='2']:after{
+    background: url("../../images/pop/2-1.png");
+}
+.log-sidebar ul li[data-tab='3']:after{
+    background: url("../../images/pop/3-1.png");
+}
+.log-sidebar ul li[data-tab='4']:after{
+    background: url("../../images/pop/4-1.png");
+}
+/*生长记录*/
+.log-content .table-log{
+    background: #fffdf6;
+    text-align: center;
+    width: 100%;
+    margin-top: -2px;
+}
+.log-content .log-head{
+
+}
+.log-content{
+	/*display: none;*/
+    background: #FFFDF6;
+    margin: auto;
+    /*width: 92.8%;*/
+    width: 86.8%;
+    height: 68%;
+    border: 0.12rem solid #ffca85;
+    border-radius: 0.8rem 0.8rem 0.6rem 0.6rem;
+    overflow-y: scroll;
+    margin-top: 26%;
+}
+
+.log-content .log-head ul{
+    width: 100%;
+    text-align: center;
+    height: 3.5rem;
+    color: #FFFFFF;
+    background: #f1951e;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+.log-content .log-head .log-1 li{
+    width: 15.866667%;
+}
+.log-content .log-head .log-3 li{
+    width: 23.866667%;
+}
+.log-content .log-head .log-2 li{
+    width: 31.866667%;
+}
+.log-content .log-head li{
+    height: 100%;
+    border-left: 0.1rem solid #FFFFFF;
+    float: left;
+    background: #f1951e;
+}
+.log-content .log-head li:first-child{
+    border-left: 0rem;
+}
+.log-content .log-head p{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.log-content .table-log{
+    float: left;
+}
+
+.log-content .table-log tbody tr{
+    font-size: 0.65rem;
+    font-weight: normal;
+    height: 1.788rem;
+}
+.log-content .table-log .log-tr1 td{
+    width: 15.866667%;
+}
+.log-content .table-log .log-tr2 td{
+    width: 0.866667%;
+}
+.log-content .table-log .log-tr3 td{
+    width: 0.866667%;
+}
+.log-content .table-log .log-tr4 td{
+    width: 0.866667%;
+}
+
+.flip .upper{
+    margin-right: 1rem;
+    background: url("../../images/pop/upper.png") no-repeat;
+    background-size: 100%;
+    width: 2.6rem;
+    height: 2.6rem;
+}
+.flip .lower{
+    margin-left: 1rem;
+    background: url("../../images/pop/lower.png") no-repeat;
+    background-size: 100%;
+    width: 2.6rem;
+    height: 2.6rem;
+
+}
+.flip{
+	/*display: none;*/
+    margin-top: 0.4rem;
+    text-align: center;
+}
+.flip .number{
+    padding: 0.5rem 1.6rem;
+    background: url("../../images/pop/number.png") no-repeat;
+    background-size: 100% 100%;
+
+
+}
+.flip .sum{
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-top: 0.3rem;
+    border-radius: 0.6rem;
+    background: #E7C661;
+}
+.flip .sum ul{
+    color: #60431A;
+    border: 0.1rem solid #E7C560;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 0.6rem;
+    background: #F3E29B;
+    padding-top: 0.3rem;
+}
+.flip .sum ul li:last-child{
+    border-right: 0rem;
+}
+.flip .sum ul li{
+    display: inline-table;
+    width: 30%;
+    border-right: 0.12rem solid #FFEFC1;
+    font-weight:bold;
+}
+.flip .sum ul li p{
+    font-size: 0.7rem;
+    font-weight:normal;
+}
+
+.chickensLog header .header-name{
+    position: absolute;
+    right: 0rem;
+    width: 100%;
+    height: 5.4rem;
+}
+.chickensLog header .header-name .leaf{
+    text-align: center;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    z-index: 20;
+    background: url('../../images/pop/header_leaf.png');
+    background-size: 100% 100%;
+    width: 41%;
+    right: 0rem;
+    line-height: 3.3rem;
+    font-size: 0.8rem;
+}
+.chickensLog header .header-name .header_box{
+    background-image: url("../../images/home/portrait/portrait-woman.png");
+    position: absolute;
+    top: 38.7%;
+    right: 0.833333rem;
+    margin-top: -1.45833333rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    width: 3rem;
+    height: 3rem;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    z-index: 22;
+}

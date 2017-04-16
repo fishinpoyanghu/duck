@@ -11,12 +11,16 @@
 }
 
 .popup .popup-title{
-	line-height: 2.7rem;
+	    line-height: 2.7rem;
+    /* color: #fff; */
     color: #fff;
-    /* font-weight: bolder;
-    -webkit-text-fill-color: #fff;
-    -webkit-text-stroke: 1px #694b21; */
+    font-size: 22px;
+    background: #f72331;
+    font-weight: bold;
     text-align: center;
+    width: 60%;
+    margin: 5px auto;
+    border-radius: 9px;
 }
 
 .popup .close-btn{
@@ -41,6 +45,7 @@
     position: relative;
     top: 50% !important;
 	margin-top:-200px;
+	padding-top: 3px;
 }
 
 .popup .popfloor .list-form1{
@@ -185,9 +190,12 @@
 .popup .popfloor .list-form ul li{
 	background-color: #fff7d2;
     margin: 0.3rem;
+    padding: 16px;
+    font-size: 14px;
     border-radius: 0.6rem;
     border: 0.15rem solid #ac8207;
     box-shadow: 0 0.2rem 0 #b9ac7f;
+    
 }
 
 .popup .popfloor .list-form ul li>div.none{

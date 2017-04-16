@@ -268,22 +268,30 @@
 }
 
 .home-menus button.PY {
-	 
-  background-position: 66%;
+	 background-image: url(../../images/home/home_foot_3.png);
+	background-size: 80%;
+  background-position: 50%;
 }
 .home-menus button.changeCenter {
-  background-position:  0%;
+	background-image: url(../../images/home/home_foot_1.png);
+	background-size: 80%;
+  background-position:  50% 50%;
 }
 .home-menus button.home {
+	background-image: url(../../images/home/home_foot_2.png);
+	background-size: 80%;
 	
   background-position: 50%;
 }
 .home-menus button.log {
-	
-  background-position: 35%;
+	background-image: url(../../images/home/home_foot_2.png);
+	background-size: 80%;
+  background-position: 50%;
 }
 .home-menus button.rule {
-	 background-position: 100%;
+	background-image: url(../../images/home/home_foot_4.png);
+	background-size: 80%;
+	 background-position: 50%;
  
 } 
 
@@ -307,18 +315,21 @@
 section.chart {
   position: absolute;
   width: 100%;
+  width: 84%;
   top: 7.13888889rem;
   bottom: 5.16666667rem;
+  padding: 0 4%;
 }
 section.chart:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  bottom: 4.72222222rem;
-  background: url('../../images/home/paper.png') no-repeat;
-  background-size: 100% 100%;
+      content: '';
+    position: absolute;
+    width: 100%;
+    width: 90%;
+    top: 6%;
+    left: 9%;
+    bottom: 4.72222222rem;
+    background: url(../../images/home/paper_home.png) no-repeat;
+    background-size: 100% 100%;
 }
 section.chart .board,
 section.chart .paper {
@@ -340,6 +351,12 @@ section.chart button {
   text-align: center;
   text-shadow: 0 0 #a95800;
 }
+section.chart .goTianE{
+	height: 3rem;
+	background: url(../../images/pop/goMain_btn.png) no-repeat;
+	background-size: contain;
+	background-position: 50% 0;
+}
 #LineChart {
   z-index: 1;
   width: 86%;
@@ -348,6 +365,7 @@ section.chart button {
   position: absolute;
   top: 3.69444444rem;
   bottom: 5.44444444rem;
+  padding-left: 4%;
 }
 #LineChart > div {
   position: absolute !important;
@@ -407,6 +425,7 @@ button.yellowBtn span,button.emw-code span {
   left: 0;
   top: 0;
   line-height: 2.77777778rem;
+  /*background: url(../../images/pop/goMain_btn.png);*/
   text-shadow: 0 0 1px #a95800,0 0 1px #a95800,0 0 2px #a95800,0 0 1px #a95800,0 0 1px #a95800,0 0 2px #a95800;
 }
 /*首页 end*/

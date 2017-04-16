@@ -1,7 +1,9 @@
 /**
  * Created by jiaruo on 17/2/25.
  */
-var host = "http://www.duck.com//api.php";
+ //var host = "http://www.mmo-bar.com/api.php";
+var host = "http://"+window.location.hostname+"/api.php";
+ 
 /**
  * 弹窗
  * @param text

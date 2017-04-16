@@ -12,9 +12,11 @@ html {
 }
 .chicken-page {
 	background: url(../images/farm/farm_bg.png) no-repeat;
+	background-size: cover;
 	/*background: #f3c580;*/
 	min-height: 100%;
 	width: 100%;
+	height: 100%;
 	overflow-x: hidden;
 	position: relative;
 	display: -webkit-box;
@@ -312,15 +314,15 @@ ul.field li {
 .chicken-page .userBox em.btn {
 	z-index: 1;
 	position: absolute;
-	width: 1.11111111rem;
-	height: 2.16666667rem;
+	width: 3.11111111rem;
+	height: 4.16666667rem;
 	padding: 10px;
-	top: 3.52777778rem
+	top: 2.52777778rem
 }
 
 .chicken-page .userBox em.btn.back {
 	background-image: url(../images/farm/em.btn-l.png);
-	left: .27777778rem
+	left: .07777778rem
 }
 
 .chicken-page .userBox em.btn.back a {
@@ -377,11 +379,18 @@ ul.field li {
 	height: 60px;
 }
 ul.field {
-	margin: 2.22222222rem .94444444rem;
-	margin-bottom: 19vw;
+	/*margin: 2.22222222rem .94444444rem;
+	margin-bottom: 19vw;*/
+	padding: 9.22222222rem .94444444rem;
+	padding-bottom: 19vw;
 	margin-top: 0;
+	margin-bottom: 50px;
 	position: relative;
 	z-index: 2;
+	background: url(../images/farm/floor.png) no-repeat;
+	background-size: cover;
+	background-position: 0 -76px;
+	overflow: hidden;
 }
 
 ul.field li {
@@ -398,7 +407,8 @@ ul.field li {
 }
 
 ul.field li.green {
-	background-image: url(../images/farm/green-field.png)
+	background-image: url(../images/farm/green-field.png);
+	background-size: 100% 100%;
 }
 
 ul.field li.g1 {
@@ -579,7 +589,8 @@ ul.field:before {
 	border: none;
 	
 	background: url(../images/home/board.png) no-repeat;
-	background-size: cover;
+	/*background-size: cover;*/
+	background-size: 94% 75%;
 }
 
 .floor-bg {
@@ -1412,7 +1423,7 @@ section.shade>.content {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	border: 2px solid #5c2f0f;
+	/*border: 2px solid #5c2f0f;*/
 	-webkit-border-radius: 1.05555556rem;
 	-moz-border-radius: 1.05555556rem;
 	border-radius: 1.05555556rem;
@@ -1420,8 +1431,9 @@ section.shade>.content {
 	width: 85.2%;
 	left: 50%;
 	margin-left: -42.6%;
-	background: url(../images/farm/grain.png) repeat-y, #fffae4;
-	background-size: 100%;
+	/*background: url(../images/farm/grain.png) repeat-y, #fffae4;*/
+	background: url(../images/farm/cangku_bg.png) repeat-y;
+	background-size: 100% 100%;
 	top: 10.2%;
 	bottom: 18.2%
 }
@@ -1490,7 +1502,7 @@ section.shade>.content i.bottom {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	height: 10%;
+	/*height: 10%;*/
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAncAAABCBAMAAADHzO1mAAAAJ1BMVEUAAADbs0bmyHLhv17kxWvlyHLjxGzQoijnxV/OnyLTpzLivlXnx2dUQKtTAAAACHRSTlMA/RnRkzdb4ruYtpYAAAIgSURBVHja7do/TxRBGMfx55Y9CivOypOGGCsrotUlFiREKwuExMSO2EFlS2m0mGQolvgnecZG1BBmu00oCFvS3MtiyB13B7fz7M1DQfP7vIRvZvaZnV1aI1BaQ7z7xNsiUNqiXQKlXdogUNqgdQKldcS7T7wVAqUVKgiUCvpFoLNc0A8CnbygIwKdTkGOQOdRQYxXDKW9EA8HPaVBiPeHQMWHeBi3OjmHeBi3Op3reJgYOnsh3gEmhs6AP4d4PwnSdTnEY/5OkG6JuSDGQ0/l4zgervQUDkbxcNJTyHkcz+HbbbIXo3jYtxr9UTzsW4WcJ/Ec5m2i/Wk8/kuQIvPTeLgcSNThm3gYGcn6M/HwipZmiW/Fw9VKisEkHpaecuFN4/FjgsVk/bl4R/hFdEHveS4enxAsYtk3xOOXBO2yATfFc58I2mT73BiP/20TyLIdH4nn/qNei+dVNN7qGa5F5XZWiGe+oZ4gH5p4vHNjvuK4F7UzNOaLFM8cviFo0n1nAnHlBZfIN6+7OTRyPDN2+OrtNh5+E88+bL42QUs8aFMx4qldIB7iPQQbjccG2vSj8c4NyGw83hMDMusRT62Kxzs1ILvgaLzfBkT2aTyew8SQWR+Px6uoJ7EVC/Ec6gnqykvxQr3aQCNbVyWL8dgdo15zurpXshwvKGts3TtsSFf1St8aLziuayy/GWHR9XplaCfFm3IlJsdsujLwfFdxBWPFOw6trV2SAAAAAElFTkSuQmCC) 0 bottom no-repeat;
 	background-size: 100%;
 	overflow: hidden;
@@ -1524,13 +1536,13 @@ section.shade>.content .show {
 	left: 50%;
 	margin-left: -43.5%;
 	top: 3.16666667rem;
-	background: #d0c7a7;
+	/*background: #d0c7a7;*/
 	text-align: center;
-	border: 1.5px solid #ac8207;
+	/*border: 1.5px solid #ac8207;*/
 	-webkit-border-radius: .83333333rem;
 	-moz-border-radius: .83333333rem;
 	border-radius: .83333333rem;
-	box-shadow: 0 0 0 3px #f9e7b2, 0 -.5rem 0 3px #f9e7b2, 0 1px 0 3px #f9e7b2, inset 0 .22222222rem 0 0 #b1a67f
+	/*box-shadow: 0 0 0 3px #f9e7b2, 0 -.5rem 0 3px #f9e7b2, 0 1px 0 3px #f9e7b2, inset 0 .22222222rem 0 0 #b1a67f*/
 }
 
 section.shade>.content.min {
@@ -1896,11 +1908,12 @@ section.shade .storage .show li {
 	-webkit-border-radius: .5rem;
 	-moz-border-radius: .5rem;
 	border-radius: .5rem;
-	border: 1.5px solid #ac8207;
+	/*border: 1.5px solid #ac8207;*/
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB/AgMAAABTU0CrAAAACVBMVEX26rT/99Lx3HzyEPm6AAAAEUlEQVQI12NwoDKkD2igDgQA5ZQcARDvtd8AAAAASUVORK5CYII=);
-	box-shadow: 0 1px 0 0 #ac8207, 0 .19444444rem 0 0 #b9ac7f;
+	background-image: url(../images/farm/cangku_item_bg.png);
+	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB/AgMAAABTU0CrAAAACVBMVEX26rT/99Lx3HzyEPm6AAAAEUlEQVQI12NwoDKkD2igDgQA5ZQcARDvtd8AAAAASUVORK5CYII=);*/
+	/*box-shadow: 0 1px 0 0 #ac8207, 0 .19444444rem 0 0 #b9ac7f;*/
 	position: relative
 }
 
@@ -1940,7 +1953,9 @@ section.shade .storage .show .ico.egg {
 }
 
 section.shade .storage .show .ico.fence {
-	background-position: 0 -7.05555556rem
+	background-image: url(../images/window/weilan.png);
+	background-size: 20% 100%;
+	/*background-position: 0 -7.05555556rem*/
 }
 
 section.shade .storage .show .ico.haDog {
@@ -1997,8 +2012,8 @@ section.shade .storage .show .info em {
 
 section.shade .storage .show button {
 	position: absolute;
-	width: 19.2%;
-	right: 7.2%
+	width: 24.2%;
+	right: 4.2%
 }
 
 section.shade .storage .show button.grayListBtn span {
@@ -2189,20 +2204,21 @@ section.shade.showClean {
 button.redListBtn {
 	text-shadow: 0 0 1.5px #bc4a18, 0 0 1.5px #bc4a18, 0 0 1.5px #bc4a18;
 	height: 1.83333333rem;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABCCAMAAACb1/MKAAAAUVBMVEXtYyfzglv0imj6p5n1jm78trL7rqW8Shj6q5/0hmL9ubf5pJT4nor4m4X5oY/+vL3yfFL2k3j8s672kXT7sar3ln33mIH+wMPxdUXwcDzvaTFaJNdeAAABL0lEQVRYw+3Y3W6DMAyGYUPZmo2VdqVjwP1f6Ez4+WI3BE2Ik8qP06oq0os5hc6He5Fb/CZc133GvQl3j8Iiz47iXXlMaLuJXir5kN6BfO/6lIvtGEZVUHHO8WdCyIogbCfdcJxyWtBKUTT1jjyqx0U+UPKZ0daOLrYkioiWfGZVWQGppIvuKGPjMFGEL+FCXH1O8kFx7oIMVrIoNU1DyOlHRjGRvOjk5AdoTJ7QSxZ1D0X4DtV1TarIwb1JKDwKe/uKhZDzFPmAUNwM6qJu+gl9eOSLoIOgg3MPQU4Kmf/KaC2ZWBFNVJHNNFp76kgRSewo3IJftwUhqotDUhYzDcEEypeNAMX/J9txFl1Lod7rJm0c/8/XeAJ91ws0jDHGGGOMMcYYY473Im/+z4f7A+wyac7YNX0AAAAAAElFTkSuQmCC) left top no-repeat;
+	/*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABCCAMAAACb1/MKAAAAUVBMVEXtYyfzglv0imj6p5n1jm78trL7rqW8Shj6q5/0hmL9ubf5pJT4nor4m4X5oY/+vL3yfFL2k3j8s672kXT7sar3ln33mIH+wMPxdUXwcDzvaTFaJNdeAAABL0lEQVRYw+3Y3W6DMAyGYUPZmo2VdqVjwP1f6Ez4+WI3BE2Ik8qP06oq0os5hc6He5Fb/CZc133GvQl3j8Iiz47iXXlMaLuJXir5kN6BfO/6lIvtGEZVUHHO8WdCyIogbCfdcJxyWtBKUTT1jjyqx0U+UPKZ0daOLrYkioiWfGZVWQGppIvuKGPjMFGEL+FCXH1O8kFx7oIMVrIoNU1DyOlHRjGRvOjk5AdoTJ7QSxZ1D0X4DtV1TarIwb1JKDwKe/uKhZDzFPmAUNwM6qJu+gl9eOSLoIOgg3MPQU4Kmf/KaC2ZWBFNVJHNNFp76kgRSewo3IJftwUhqotDUhYzDcEEypeNAMX/J9txFl1Lod7rJm0c/8/XeAJ91ws0jDHGGGOMMcYYY473Im/+z4f7A+wyac7YNX0AAAAAAElFTkSuQmCC) left top no-repeat;*/
+	background: url(../images/farm/cangkuBtn_bg.png) left top no-repeat;
 	background-size: 100% 100%;
 	position: absolute;
 	top: 50%
 }
 
-button.redListBtn:after,
+/*button.redListBtn:after,
 button.redListBtn:before {
 	height: 100%;
 	top: 0;
 	content: '';
 	position: absolute;
 	width: .66666667rem
-}
+}*/
 
 button.redListBtn:before {
 	left: -.61111111rem;

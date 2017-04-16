@@ -213,8 +213,8 @@ $(function() {
 				dataType: "json",
 				success: function(data) {
 					if(data.errcode == 10000) {
-						cleanFriend_alert(data.msg)
-						window.location.reload();
+						returnSucc_alert(data.msg)
+//						window.location.reload();
 					} else {
 						cleanFriend_alert(data.msg)
 					}
@@ -247,9 +247,13 @@ $(function() {
 				dataType: "json",
 				success: function(data) {
 					if(data.errcode == 10000) {
-						cleanFriend_alert('收获成功');
-						setTimeout(function(){
+						if (type==1) {
+							returnSucc_alert('收获成功');
+						}else{
 							window.location.reload();
+						}
+						setTimeout(function(){
+//							window.location.reload();
 						},1000)
 					} else {
 						cleanFriend_alert(data.msg);
@@ -308,8 +312,8 @@ $(function() {
 			success: function(data) {
 				console.log(data)
 				if(data.errcode == 10000) {
-					cleanFriend_alert('增养成功')
-					window.location.reload();
+					returnSucc_alert('增养成功')
+//					window.location.reload();
 				} else {
 					cleanFriend_alert(data.msg);
 				}
@@ -353,8 +357,8 @@ $(function() {
 			success: function(data) {
 				console.log(data)
 				if(data.errcode == 10000) {
-					cleanFriend_alert('孵化成功')
-					window.location.reload();
+					returnSucc_alert('孵化成功')
+//					window.location.reload();
 				} else {
 					cleanFriend_alert(data.msg);
 				}
@@ -401,8 +405,8 @@ $(function() {
 			success: function(data) {
 				console.log(data)
 				if(data.errcode == 10000) {
-					cleanFriend_alert('购买孵化机成功')
-					window.location.reload();
+					returnSucc_alert('购买孵化机成功')
+//					window.location.reload();
 				} else {
 					cleanFriend_alert(data.msg);
 				}
@@ -448,8 +452,8 @@ $(function() {
 			success: function(data) {
 				console.log(data)
 				if(data.errcode == 10000) {
-					cleanFriend_alert('成功放入天鹅蛋')
-					window.location.reload();
+					returnSucc_alert('成功放入天鹅蛋')
+//					window.location.reload();
 				} else {
 					cleanFriend_alert(data.msg);
 				}
@@ -487,8 +491,8 @@ $(function() {
 			success: function(data) {
 				console.log(data)
 				if(data.errcode == 10000) {
-					cleanFriend_alert('成功取出天鹅蛋')
-					window.location.reload();
+					returnSucc_alert('成功取出天鹅蛋')
+//					window.location.reload();
 				} else {
 					cleanFriend_alert(data.msg);
 				}

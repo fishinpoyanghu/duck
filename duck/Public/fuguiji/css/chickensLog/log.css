@@ -42,20 +42,23 @@
     top: 4.6%;
 }
 .chickensLog .log-deal-with img:first-child{
-    width: 15.7%;
+    width: 25.7%;
     position: absolute;
     top: 1.145656%;
+    left: 3%;
+    z-index: 1111111;
 }
 .chickensLog header .log-text-top{
-    z-index: 23;
-    background: url("../../images/pop/chickens-sign.png") no-repeat;
+        z-index: 23;
+    background: url(../../images/pop/e_log_title.png) no-repeat;
     background-size: 100%;
     width: 37%;
     position: absolute;
     height: 10%;
-    left: 50%;
-    top: 5.3%;
+    left: 40%;
+    top: 7.3%;
     margin-left: -12%;
+    /* top: 2.3%; */
     
     /*暂时添加，有了图片删掉*/
        /*width: 30%;
@@ -75,9 +78,11 @@
    
 }
 .chickensLog .log-main{
-    border: 0.12rem solid #694b21;
+    /*border: 0.12rem solid #694b21;*/
     position: absolute;
-    background: #e7c55f;
+    /*background: #e7c55f;*/
+   background: url(../../images/pop/panel_content_bg.png) no-repeat;
+   background-size: 100% 100%;
     width: 82%;
     margin: 3.1rem auto 0rem 3rem;
     min-height: 29.8rem;
@@ -86,19 +91,23 @@
     margin-top: 0;
     min-height: initial;
     top: 9%;
+    max-height: 586px;
 }
 .chickensLog .log-main .log-package{
-    z-index: 1;
-    width: 100%;
+        z-index: 1;
+    width: 96%;
     /* min-height: 25.9rem; */
-    background: url("../../images/pop/pop-panel2.png") repeat-y;
-    background-size: 100%;
+    background: url(../../images/pop/pop-panel22.png) no-repeat;
+    background-size: 100% 90%;
     border-radius: 1.4rem;
     overflow: hidden;
-    padding-top: 3.4rem;
+    padding-top: 2.5rem;
     height: 98.3%;
     position: absolute;
     box-sizing: border-box;
+    top: 8%;
+    left: 1%;
+    padding: 11% 2%;
 }
 .chickensLog .log-foot{
     width: 100%;
@@ -154,6 +163,7 @@
 .log-sidebar{
     position: absolute;
     left: -2.5rem;
+    left: -38px;
 }
 .log-sidebar ul li{
     overflow: hidden;
@@ -188,6 +198,7 @@
 
 }
 .log-content{
+	/*display: none;*/
     background: #FFFDF6;
     margin: auto;
     width: 92.8%;
@@ -195,6 +206,7 @@
     border: 0.12rem solid #ffca85;
     border-radius: 0.8rem 0.8rem 0.6rem 0.6rem;
     overflow-y: scroll;
+    margin-right: 0;
 }
 
 .log-content .log-head ul{
@@ -281,10 +293,11 @@
 .flip .sum{
 
     margin-left: 1rem;
-    margin-right: 1rem;
+    /*margin-right: 1rem;*/
     padding-top: 0.3rem;
     border-radius: 0.6rem;
     background: #E7C661;
+    font-size: 13px;
 }
 .flip .sum ul{
     color: #60431A;
@@ -329,16 +342,16 @@
     font-size: 0.8rem;
 }
 .chickensLog header .header-name .header_box{
-    background-image: url("../../images/home/portrait/portrait-woman.png");
+        background-image: url(../../images/home/portrait/portrait-woman.png);
     position: absolute;
-    top: 38.7%;
-    right: 0.833333rem;
+    top: 47.7%;
+    right: 2.833333rem;
     margin-top: -1.45833333rem;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
