@@ -56,8 +56,10 @@
                     </div>
                 </div>
             </section>
-            <img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine"> <img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine"> </div>
-        <section class="chart"> <img style="display: block;width: 38%;left: 57%;" src="__PUBLIC__/fuguiji/images/home/title.png" alt="" class="chart-title"> <img src="__PUBLIC__/fuguiji/images/home/board.png" alt="" class="board">
+            <!--<img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine">-->
+            <!--<img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine">-->
+        </div>
+        <section class="chart"> <img style="display: block;width: 38%;left: 57%;" src="__PUBLIC__/fuguiji/images/home/title.png" alt="" class="chart-title"> <img src="__PUBLIC__/fuguiji/images/home/board_home.png" alt="" class="board">
             <div id="LineChart" _echarts_instance_="1487564255011" style="-webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0);">
                 <div style="position: relative; overflow: hidden; width: 276px; height: 220px;">
                     <div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 276px; height: 220px; user-select: none;"></div>
@@ -65,7 +67,9 @@
                     <canvas width="552" height="440" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 276px; height: 220px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
                 </div>
                 <span class="subtext">&nbsp;</span><span class="publicSubtext">数据加载中</span></div>
-            <button class="yellowBtn"><span>进入天鹅城</span></button>
+            <button class="goTianE">
+            	<!--<span>进入天鹅城</span>-->
+            </button>
         </section>
         <div class="home-menus clearfix" style="width:100%;">
             <!--todo 按钮选中效果添加.cur-->
@@ -787,6 +791,12 @@
             var url = "<{:U('Index/farm')}>?token="+token;
             window.location.href=url;
         });
+        $(".goTianE").click(function(){
+            var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var token = userInfo.token;
+            var url = "<{:U('Index/farm')}>?token="+token;
+            window.location.href=url;
+        });
     });
 </script>
 <script type="text/javascript">
@@ -804,7 +814,41 @@
         $('.item-content .round:eq(1)').text(userInfo.all_animal);
 
         $(".gamseet").click(function () {
-            $("#gameSet").show();
+        	var htm = '';
+//          $("#gameSet").show();mail
+			$.ajax({
+				url:host + "/User/myemail",
+				type:"post",
+				data:{token:userInfo.token},
+				dataType:"json",
+				async: true,
+				success:function(data){
+					if(data.errcode != 10000){
+						alertMsg(data.msg);
+					}else{
+						
+                            
+						$.each(data.result,function(i,n){
+							htm += '<li><div class="title"><div class="none"></div><div class="note-title"><div class="chick">&nbsp;</div>'
+							+n.msg+'</div><div class="date" style="text-align:right"> '
+							+n.create_time+'</div></div><div class="note-context"></div></li>';
+                        
+							console.log(n)
+						})
+			          $("#mail").show();
+			          console.log($('#mail .border-form>ul').html())
+			          $('#mail .border-form>ul').html(htm);
+			          
+//						html = '<li>
+//                          <div class="title">首次注册得1只小天鹅</div>
+//                          <div class="date">2017.02.16</div></div>
+//                      </li>
+//						';
+						console.log(data)
+					}
+
+				}
+			});
         });
         $(".close-btn").click(function () {
             $(this).parent().parent().hide();

@@ -64,7 +64,7 @@
 				<!-- 代码 开始 -->
 				<img src="__PUBLIC__/fuguiji/images/zhuanpan/1.png" id="shan-img" style="display:none;" />
 				<img src="__PUBLIC__/fuguiji/images/zhuanpan/2.png" id="sorry-img" style="display:none;" />
-
+				
 				<img class="zhuanpan_title_png" src="__PUBLIC__/fuguiji/images/zhuanpan/zhuanpan_title.png" alt="" />
 				<div class="banner">
 					<div class="turnplate" style="background-image:url(__PUBLIC__/fuguiji/images/zhuanpan/turnplate-bg.png);background-size:100% 100%;">
@@ -97,6 +97,15 @@
 					<a class="only-confirm"></a>
 				</div>
 			</div>
+			<!--点击转盘弹出，点击确定转盘-->
+			<div class="login-alert login-alert-msg" id="confirmZhuanpan_alert" style="display:none;">
+				<div class="login-alert-board msg-board">
+					<div class="context">
+						<div class="text">这里是你自定义的内容</div>
+					</div>
+					<a class="only-confirm"></a>
+				</div>
+			</div>
 			<!--</section>-->
 			<script src="__PUBLIC__/fuguiji/js/jquery-1.7.2.min.js"></script>
 			<script src="__PUBLIC__/fuguiji/js/echarts.js"></script>
@@ -114,9 +123,53 @@
 					textRadius: 155, //大转盘奖品位置距离圆心的距离
 					insideRadius: 68, //大转盘内圆的半径
 					startAngle: 0, //开始角度
+					need_num: 5, //抽奖需要的数量
 
 					bRotate: false //false:停止;ture:旋转
 				};
+				//				console.log(gameConfig)
+				//				var gameConfig = null;
+				getGameConfig();
+				
+				function getGameConfig() {
+					$.ajax({
+						url: host + "/User/gameconfig",
+						type: "post",
+						data: {
+							token: userInfo.token
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.errcode != 10000) {
+								//							getGameConfig();
+							} else {
+								//								gameConfig = data.result;
+								turnplate.need_num = data.result.sysconf.lotter_num
+								console.log(turnplate.need_num);
+							}
+						}
+					});
+				}
+				//旋转转盘 item:奖品位置; txt：提示语;
+					var rotateFn = function(item, txt) {
+						var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length * 2));
+						if(angles < 270) {
+							angles = 270 - angles;
+						} else {
+							angles = 360 - angles + 270;
+						}
+						$('#wheelcanvas').stopRotate();
+						$('#wheelcanvas').rotate({
+							angle: 0,
+							animateTo: angles + 1800,
+							duration: 8000,
+							callback: function() {
+								returnSucc_alert('恭喜获得' + txt);
+								turnplate.bRotate = !turnplate.bRotate;
+							}
+						});
+					};
+
 				$.ajax({
 					url: host + "/User/lottery",
 					type: "post",
@@ -156,7 +209,7 @@
 							} else {
 								$.each(turnplate.restaraunts, function(i, n) {
 									if(data.id == n.id) {
-										rotateFn(i, n.name);
+										rotateFn(i+1, n.name);
 										console.log(i)
 									}
 									//									console.log(n)
@@ -184,31 +237,12 @@
 						});
 					};
 
-					//旋转转盘 item:奖品位置; txt：提示语;
-					var rotateFn = function(item, txt) {
-						var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length * 2));
-						if(angles < 270) {
-							angles = 270 - angles;
-						} else {
-							angles = 360 - angles + 270;
-						}
-						$('#wheelcanvas').stopRotate();
-						$('#wheelcanvas').rotate({
-							angle: 0,
-							animateTo: angles + 1800,
-							duration: 8000,
-							callback: function() {
-								returnSucc_alert('恭喜获得'+txt);
-								turnplate.bRotate = !turnplate.bRotate;
-							}
-						});
-					};
-
+					
 					$('.pointer').click(function() {
 						console.log(turnplate.bRotate)
 						if(turnplate.bRotate) return;
 						turnplate.bRotate = !turnplate.bRotate;
-						lotteryRun();
+						confirmZhuanpan_alert('转动一次需要消耗'+turnplate.need_num+'只鹅')
 						//						setInterval(function() {
 						//							var item = rnd(1, turnplate.restaraunts.length);
 						//							item = 5
@@ -221,34 +255,38 @@
 						//					rotateFn(item, turnplate.restaraunts[item - 1]);
 					});
 
-					function lotteryRun() {
-						$.ajax({
-							url: host + "/User/lotteryRun",
-							type: "post",
-							data: {
-								token: userInfo.token
-							},
-							dataType: "json",
-							async: false,
-							success: function(data) {
-								if(data.errcode != 10000) {
-									turnplate.bRotate = !turnplate.bRotate;
-									cleanFriend_alert(data.msg)
-								} else {
-									$.each(turnplate.restaraunts, function(i, n) {
-										if(data.id == n.id) {
-											rotateFn(i+1, n.name);
-											console.log(i)
-										}
-										//									console.log(n)
-									});
-									//								console.log(turnplate.restaraunts)
-									//								console.log(data.id)
-								}
-							}
-						});
-					}
+//					function lotteryRun() {
+//						$.ajax({
+//							url: host + "/User/lotteryRun",
+//							type: "post",
+//							data: {
+//								token: userInfo.token
+//							},
+//							dataType: "json",
+//							async: false,
+//							success: function(data) {
+//								if(data.errcode != 10000) {
+//									turnplate.bRotate = !turnplate.bRotate;
+//									cleanFriend_alert(data.msg)
+//								} else {
+//									$.each(turnplate.restaraunts, function(i, n) {
+//										if(data.id == n.id) {
+//											rotateFn(i + 1, n.name);
+//											console.log(i)
+//										}
+//										//									console.log(n)
+//									});
+//									//								console.log(turnplate.restaraunts)
+//									//								console.log(data.id)
+//								}
+//							}
+//						});
+//					}
 				});
+
+		$('body').delegate('#confirmZhuanpan_alert .msg-board .only-confirm', 'click', function(){
+			lotteryRun();
+		})
 
 				function rnd(n, m) {
 					var random = Math.floor(Math.random() * (m - n + 1) + n);
@@ -339,6 +377,13 @@
 					}
 				}
 
+				function confirmZhuanpan_alert(text) {
+					//					$('.shade').show();
+					$('#confirmZhuanpan_alert').show();
+					$('#confirmZhuanpan_alert').css('z-index', '110');
+					$('#confirmZhuanpan_alert').css('top', '0');
+					console.log($('#confirmZhuanpan_alert .context .text').html(text))
+				}
 				function returnSucc_alert(text) {
 					//					$('.shade').show();
 					$('#returnSucc_alert').show();

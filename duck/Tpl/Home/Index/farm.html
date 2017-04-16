@@ -103,15 +103,16 @@
 							</div>
 						</div>
 					</section>
-					<img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine"> <img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine"> <em class="btn back"></em> <em class="btn refresh"></em></div>
-				<div class="watchman">
-					<img src="__PUBLIC__/fuguiji/images/farm/watchman.png" alt="" class="l-vine vine">
+					<!--<img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine"> <img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine">-->
+					<em class="btn back"></em> <em class="btn refresh"></em></div>
+				<div style="height: 60px;display: none;" class="watchman" >
+					<img style="display: none;" src="__PUBLIC__/fuguiji/images/farm/watchman.png" alt="" class="l-vine vine">
 				</div>
 				<div class="fieldBox">
 					<div class="middleware">
 						<span id="getEggThrough" class="Bubble" style="display: none;width: 60px;height: 60px;left: 40%;top: 40%;"><i style="top: 50%;opacity: 1;"></i></span>
 						<ul class="field clearfix">
-							<img class="floor-bg" src="__PUBLIC__/fuguiji/images/farm/floor.png" alt="">
+							<!--<img class="floor-bg" src="__PUBLIC__/fuguiji/images/farm/floor.png" alt="">-->
 							<!--todo 等级：lv1，lv2，lv3，lvMax-->
 							<li class="green" style="height: 90.5739px;">
 								<section class="Bubble"><i></i></section>
@@ -261,31 +262,32 @@
 					<br>
 					<button class="yellowBtn"><span>确认</span></button>
 					<i class="bottom"></i></div>
-				<!--todo: 还没有超级孵化机-->
+				<!--todo: 还没有保温箱-->
 				<div class="content no-mchine mchine" style="display: none;">
-					<div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> <img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>超级孵化机</em>
+					<div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> <img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>保温箱</em>
 					</div>
 					<i class="close"></i><i class="bottom"></i>
 					<div class="show"><img src="__PUBLIC__/fuguiji/images/window/mchine/no-mchine.png" alt="">
 						<div>
-							<p>你还没有超级孵化机呢</p>
-							<p>把鹅蛋放进超级孵化机能获得<br> 更高的收益哦~
+							<!--<p>你还没有保温箱呢</p>-->
+							<p>你还没有保温箱呢</p>
+							<p>把鹅蛋放进保温箱能获得<br> 更高的收益哦~
 							</p>
 						</div>
 					</div>
 					<button class="yellowBtn"><span>推荐<em>50</em>位好友即可获取</span></button>
 					<button class="yellowBtn" id="chickBuyMchine"><span>消耗<em>1000</em>小天鹅马上获取</span></button>
 				</div>
-				<!--todo: 有超级孵化机-->
+				<!--todo: 有保温箱-->
 				<div class="content has-mchine mchine" style="display: none">
 					<div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt="">
-						<img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>超级孵化机</em>
+						<img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>保温箱</em>
 					</div>
 					<i class="close"></i><i class="bottom"></i>
 					<div class="show"><img src="__PUBLIC__/fuguiji/images/window/mchine/has-mchine.png" alt="">
 						<div>
 							<p><em class="machine_has_egg">0</em> 只鹅蛋正在孵化...</p>
-							<p>把鹅蛋放进超级孵化机能获得<br> 更高的收益哦~
+							<p>把鹅蛋放进保温箱能获得<br> 更高的收益哦~
 							</p>
 						</div>
 					</div>
@@ -344,14 +346,14 @@
 					<button class="yellowBtn"><span>确认</span></button>
 					<i class="bottom"></i>
 				</div>
-				<!--todo：消耗鹅获取孵化机-->
+				<!--todo：消耗鹅获取保温箱-->
 				<div class="content min confirm buySuper" style="display: none">
 					<div class="flex-box">
 						<div class="f-l"></div>
 						<div class="flex"></div>
 						<div class="f-r"></div>
 					</div>
-					<p>将消耗1000只<i class="icon-check"></i>获取超级孵化机</p>
+					<p>将消耗1000只<i class="icon-check"></i>获取保温箱</p>
 					<button class="buffBtn"><span>取消</span></button>
 					<button class="yellowBtn"><span>确认</span></button>
 					<i class="bottom"></i></div>
@@ -407,7 +409,8 @@
 
 				<!--todo:我的仓库-->
 				<div class="content storage" id="storage-a" style="display: none">
-					<div class="title"><img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> <img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> <img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>我的仓库</em>
+					<div class="title">
+						<!--<img src="__PUBLIC__/fuguiji/images/window/title-bg.png" class="title-c" alt=""> 						<img src="__PUBLIC__/fuguiji/images/window/left_y.png" class="title-l" alt=""> 						<img src="__PUBLIC__/fuguiji/images/window/right_y.png" class="title-r" alt=""> <em>我的仓库</em>-->
 					</div>
 					<i class="close"></i><i class="bottom"></i>
 					<ul class="show">
@@ -446,8 +449,8 @@
 						</li>
 						<li class="text haveSuperIncubator"><i class="ico machine"></i>
 							<div class="content">
-								<p class="name">孵化机</p>
-								<p class="info">孵化机孵化鹅蛋，产量更高哦</p>
+								<p class="name">保温箱</p>
+								<p class="info">保温箱孵化鹅蛋，产量更高哦</p>
 							</div>
 							<button class="redListBtn" id="machine"><span>获得</span></button>
 						</li>
@@ -1101,7 +1104,7 @@
 						$(".field li").eq(li_index).find('.Bubble').children().css('opacity', 0);
 					}
 					$(".field li").eq(li_index).addClass('');
-					$(".field li").eq(li_index).append('<img  style="width:100%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_'+runGifNum+'.gif" alt="">');
+					$(".field li").eq(li_index).append('<img  style="width:80%;margin-top:13%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_'+runGifNum+'.gif" alt="">');
 //					$(".field li").eq(li_index).append('<div class="chicken-box run-move"  style="animation-delay:  ' + c[i].delay + 's; top: ' + c[i].top + 'rem;" id-name=' + c[i].name + '><i class="chicken-run" style="animation-delay:  ' + c[i].delay + 's;"></i><span class="txt ' + cl + '">' + txt + '<span></div>');
 //					$(".field li").eq(li_index).append('<img  style="width:100%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_3.gif" alt="">');
 //					$(".field li").eq(li_index).append('<img style="width:100%;margin-top:-20px;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_1.gif" alt="">');
