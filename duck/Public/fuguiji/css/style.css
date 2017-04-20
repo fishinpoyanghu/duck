@@ -583,9 +583,9 @@ ul.field:before {
 	-webkit-border-radius: .55555556rem;
 	-moz-border-radius: .55555556rem;
 	border-radius: .55555556rem;
-	-webkit-box-shadow: 0 0 0 1px #f9d297;
+	/*-webkit-box-shadow: 0 0 0 1px #f9d297;
 	-moz-box-shadow: 0 0 0 1px #f9d297;
-	box-shadow: 0 0 0 1px #f9d297;
+	box-shadow: 0 0 0 1px #f9d297;*/
 	border: none;
 	
 	background: url(../images/home/board.png) no-repeat;
