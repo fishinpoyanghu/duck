@@ -348,23 +348,27 @@
     background-repeat: no-repeat;
     background-size: 90%;
     background-position: center center;
+    /*background-color:#fff;*/
 }
 .popup .portrait div:nth-of-type(1){
-	background-image: url(../../images/home/portrait/portrait-man.png);
+	background-image: url(../../images/home/portrait/user_icon1.png);
 }
 .popup .portrait div:nth-of-type(2){
-	background-image: url(../../images/home/portrait/portrait-woman.png);
+	background-image: url(../../images/home/portrait/user_icon2.png);
 }
 .popup .portrait div:nth-of-type(3){
-	background-image: url(../../images/home/portrait/portrait-dog.png);
+	background-image: url(../../images/home/portrait/user_icon3.png);
 }
 .popup .portrait div:nth-of-type(4){
-	background-image: url(../../images/home/portrait/portrait-man01.png);
+	background-image: url(../../images/home/portrait/user_icon4.png);
 }
 .popup .portrait div:nth-of-type(5){
-	background-image: url(../../images/home/portrait/portrait-girl01.png);
+	background-image: url(../../images/home/portrait/user_icon5.png);
 }
-.popup .portrait div:nth-of-type(6){
+.popup .portrait div.active{
+	background-color:#fff;
+}
+/*.popup .portrait div:nth-of-type(6){
 	background-image: url(../../images/home/portrait/portrait-man02.png);
 }
 .popup .portrait div:nth-of-type(7){
@@ -372,14 +376,14 @@
 }
 .popup .portrait div:nth-of-type(8){
 	background-image: url(../../images/home/portrait/portrait-ji01.png);
-}
-.popup .portrait div:nth-of-type(9){
-	/*background-image: url(../../images/home/portrait/portrait-gou01.png);*/
+}*/
+/*.popup .portrait div:nth-of-type(9){
+	background-image: url(../../images/home/portrait/portrait-gou01.png);
 }
 .popup .portrait div:nth-of-type(10){
-	/*background-image: url(../../images/home/portrait/portrait-chick.png);*/
-}
-.popup .portrait div:nth-of-type(1).active{
+	background-image: url(../../images/home/portrait/portrait-chick.png);
+}*/
+/*.popup .portrait div:nth-of-type(1).active{
 	background-image: url(../../images/home/portrait/selected-man.png);
 }
 .popup .portrait div:nth-of-type(2).active{
@@ -408,7 +412,7 @@
 }
 .popup .portrait div:nth-of-type(10).active{
 	background-image: url(../../images/home/portrait/selected-gou01.png);
-}
+}*/
 
 .popup a.confirm-btn{
     display: block;
