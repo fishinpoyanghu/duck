@@ -105,7 +105,7 @@
 					</section>
 					<!--<img src="__PUBLIC__/fuguiji/images/farm/l-vine.png" alt="" class="l-vine vine"> <img src="__PUBLIC__/fuguiji/images/farm/r-vine.png" alt="" class="r-vine vine">-->
 					<em class="btn back"></em> <em class="btn refresh"></em></div>
-				<div style="height: 60px;display: none;" class="watchman" >
+				<div style="height: 60px;display: none;" class="watchman">
 					<img style="display: none;" src="__PUBLIC__/fuguiji/images/farm/watchman.png" alt="" class="l-vine vine">
 				</div>
 				<div class="fieldBox">
@@ -791,6 +791,7 @@
 			//				var userInfo = null;
 			//			var currentField; //选中的地
 			getGameConfig();
+
 			function getGameConfig() {
 				$.ajax({
 					url: host + "/User/gameconfig",
@@ -801,7 +802,7 @@
 					dataType: "json",
 					success: function(data) {
 						if(data.errcode != 10000) {
-//							getGameConfig();
+							//							getGameConfig();
 						} else {
 							gameConfig = data.result;
 							console.log(gameConfig);
@@ -824,12 +825,20 @@
 							//							userInfo = data.result[0];
 							sessionStorage.setItem('userInfo', JSON.stringify(data.result[0]));
 							userInfo = data.result[0];
-//							console.log(data.result[0])
+							//							console.log(data.result[0])
 							$('#num-in').text(data.result[0].feed);
 							$('.clm-r').text(data.result[0].all_animal);
 							$('.clm-l').text(data.result[0].currency);
 							//delete
 							//							data.result[0].enclosure_lev = 4;
+							//变头像
+							if(!(userInfo.icon >= 0 && userInfo.icon < 5)) {
+								userInfo.icon = 1;
+							}
+							if(!userInfo.icon) {
+								userInfo.icon = 1;
+							}
+							$('.headImg').css('background-image', 'url(__PUBLIC__/fuguiji/images/home/portrait/user_icon' + userInfo.icon + '.png)')
 							//栅栏的等级
 							$('.field li').each(function(i, n) {
 								if($(n).find(".chicken-box").size()) {
@@ -846,7 +855,7 @@
 							//delete
 							//							data.result[0].dog_lev = 4;
 							console.log($('.dog .dog_lev_icon')[0]);
-//							data.result[0].dog_lev=1;
+							//							data.result[0].dog_lev=1;
 							if(data.result[0].dog_lev) {
 								$('.dog').show();
 								$('.dog .dog_lev_icon').attr('src', $('.dog .dog_lev_icon')[0].currentSrc.slice(0, -5) + data.result[0].dog_lev + '.gif')
@@ -1066,19 +1075,19 @@
 					var txt = "";
 					var cl = "";
 					var li_index;
-					var farmAnimalsNum = parseInt(c[i].add_num)+parseInt(c[i].base_num);
+					var farmAnimalsNum = parseInt(c[i].add_num) + parseInt(c[i].base_num);
 					var runGifNum = 1;
 					if(c[i].type == '1') {
 						li_index = field_open_num.green++;
-						runGifNum = Math.ceil(farmAnimalsNum/1000);
+						runGifNum = Math.ceil(farmAnimalsNum / 1000);
 					} else {
-						li_index = field_open_num.gold++;					
-						runGifNum = Math.ceil(farmAnimalsNum/10000);
+						li_index = field_open_num.gold++;
+						runGifNum = Math.ceil(farmAnimalsNum / 10000);
 					}
 					//处理数据错误导致gif图显示错误
-					runGifNum = (runGifNum<1?1:runGifNum);
-					runGifNum = (runGifNum>3?3:runGifNum);
-					
+					runGifNum = (runGifNum < 1 ? 1 : runGifNum);
+					runGifNum = (runGifNum > 3 ? 3 : runGifNum);
+
 					field_open_ed['field' + li_index] = c[i];
 					//					console.log(li_index)
 					//					li_index = Math.floor(Math.random() * 12); //可均衡获取0到9的随机整数
@@ -1104,10 +1113,10 @@
 						$(".field li").eq(li_index).find('.Bubble').children().css('opacity', 0);
 					}
 					$(".field li").eq(li_index).addClass('');
-					$(".field li").eq(li_index).append('<img  style="width:80%;margin-top:13%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_'+runGifNum+'.gif" alt="">');
-//					$(".field li").eq(li_index).append('<div class="chicken-box run-move"  style="animation-delay:  ' + c[i].delay + 's; top: ' + c[i].top + 'rem;" id-name=' + c[i].name + '><i class="chicken-run" style="animation-delay:  ' + c[i].delay + 's;"></i><span class="txt ' + cl + '">' + txt + '<span></div>');
-//					$(".field li").eq(li_index).append('<img  style="width:100%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_3.gif" alt="">');
-//					$(".field li").eq(li_index).append('<img style="width:100%;margin-top:-20px;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_1.gif" alt="">');
+					$(".field li").eq(li_index).append('<img  style="width:80%;margin-top:13%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_' + runGifNum + '.gif" alt="">');
+					//					$(".field li").eq(li_index).append('<div class="chicken-box run-move"  style="animation-delay:  ' + c[i].delay + 's; top: ' + c[i].top + 'rem;" id-name=' + c[i].name + '><i class="chicken-run" style="animation-delay:  ' + c[i].delay + 's;"></i><span class="txt ' + cl + '">' + txt + '<span></div>');
+					//					$(".field li").eq(li_index).append('<img  style="width:100%;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_3.gif" alt="">');
+					//					$(".field li").eq(li_index).append('<img style="width:100%;margin-top:-20px;" class="bg chicken-box" src="__PUBLIC__/fuguiji/images/farm/run/run_gif_1.gif" alt="">');
 
 				}
 			}
@@ -1204,7 +1213,7 @@
 					console.log(userInfo.dog_lev)
 					$('.grade').html('LV.' + userInfo.dog_lev);
 					$('.tixianmoney').html('奖励鹅数量：' + userInfo.tixian_animal);
-					 
+
 					//					userInfo.one_clean = 0
 					if(parseFloat(userInfo.one_clean)) {
 						console.log('have');
