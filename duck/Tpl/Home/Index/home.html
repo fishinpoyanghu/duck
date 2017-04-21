@@ -318,8 +318,8 @@
                         <div>&nbsp;</div>
                         <div>&nbsp;</div>
                         <div>&nbsp;</div>
-                        <div>&nbsp;</div>
-                        <div>&nbsp;</div>
+                        <!--<div>&nbsp;</div>
+                        <div>&nbsp;</div>-->
                         <!--<div>&nbsp;</div>
                         <div>&nbsp;</div>-->
                     </div>
@@ -568,11 +568,20 @@
                     alertMsg(data.msg);
                 }else{
                    sessionStorage.setItem('userInfo',JSON.stringify(data.result[0]));
+                   var data = data.result[0];
+                   console.log(data.icon>=0&&data.icon<5)
+                   if (!(data.icon>=0&&data.icon<5)) {
+                   		data.icon = 1;
+                   }
+                   if (!data.icon) {
+                   	data.icon = 1;
+                   }
+                   $('.myheadImg').css('background-image','url(__PUBLIC__/fuguiji/images/home/portrait/user_icon'+data.icon+'.png)');
                 }
             }
         });
 		var u = 'http://' + window.location.hostname + '/index.php/Index/index/user/'+userInfo.account;
-		console.log($('#code'))
+//		console.log($('#code'))
 		$('#code').qrcode(u);
 		$('#tuiguang').val(u);
 		$.ajax({
@@ -624,7 +633,36 @@
 //              }
 //          }
 //      });
+		$('.selectBtn').click(function(){
+			var activeIcon = 0
+			$.each($('#portrait .portrait .active').parent().children(), function(i,n) {
+				if ($(n).hasClass('active')) {
+					activeIcon = i+1;
+					return false;
+				}
+			});
+			$('.myheadImg').css('background-image','url(__PUBLIC__/fuguiji/images/home/portrait/user_icon'+activeIcon+'.png)');
+			 $("#portrait").hide();
+//			return;
+			$.ajax({
+				url:host + "/User/updatehead",
+				type:"post",
+				data:{
+					token:userInfo.token,
+					icon:activeIcon
+				},
+				dataType:"json",
+				async: true,
+				success:function(data){
+					if(data.errcode != 10000){
+						alertMsg(data.msg);
+					}else{
+						console.log(data)
+					}
 
+				}
+			});
+		})
 		$('.logoutBtn').click(function(){
 			$.ajax({
 				url:host + "/User/outLogin",
@@ -882,7 +920,7 @@
 //          $("#qiaobao").show();
 //      });
         $(".myheadImg").click(function () {
-//          $("#portrait").show();
+            $("#portrait").show();
         });
 
         $(".portrait>div").click(function () {

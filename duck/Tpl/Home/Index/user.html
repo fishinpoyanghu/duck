@@ -60,10 +60,11 @@
 				<header>
 
 					<div class="header-name">
-						<div class="header_box" style="background-image: url(&quot;__PUBLIC__/fuguiji/images/home/portrait/portrait-chick.png&quot;);"> </div>
+						<!--<div class="header_box" style="background-image: url(&quot;__PUBLIC__/fuguiji/images/home/portrait/portrait-chick.png&quot;);"> </div>-->
 						<!--  <div class="leaf"> </div> -->
 					</div>
-					<div class="deal-with"> <img src="__PUBLIC__/fuguiji/images/pop/deal-with.png">
+					<div class="deal-with">
+						<!--<img src="__PUBLIC__/fuguiji/images/pop/deal-with.png">-->
 						<a href="javascript:history.back(-1);">
 							<img class="black_1" src="__PUBLIC__/fuguiji/images/pop/deal-bnt.png"></a>
 					</div>
@@ -91,8 +92,10 @@
 					<div class="package">
 
 						<div class="content xj-content" style=" display:;">
-							<p><img src="__PUBLIC__/fuguiji/images/pop/big-header.png"></p>
-							<form class="peopleCenter" id="forms" onsubmit="return false" style="padding: 0 10px;text-align: left;font-size: 14px;">
+							<!--<p>
+								<img src="__PUBLIC__/fuguiji/images/pop/big-header.png">
+							</p>-->
+							<form class="peopleCenter" id="forms" onsubmit="return false" style="padding: 0px 10px;text-align: left;font-size: 14px;">
 								<div>
 									<label for="account">账号：</label>
 									<input type="text" name="account" value="<{$data['account']}>" disabled maxlength="20" placeholder="账号(手机号)">
@@ -169,10 +172,13 @@
 								<!--</div>-->
 								<!--<div><input type="password" required name="password" placeholder="密码"></div>
         <div><input type="password" required name="password2" placeholder="确认密码"></div>-->
-								<div>
+								<div style="text-align: center;">
 									<input type="submit" value="" id="confirm1">
 								</div>
 							</form>
+						</div>
+						<div class="logoutBox" id="gameSet" style="display:block;">
+								<a class="only-confirm logoutBtn"></a>
 						</div>
 						<!--出售鸡蛋-->
 						<div class="content xj-content" style="display:none;">
@@ -351,6 +357,25 @@
 		<script src="__PUBLIC__/fuguiji/js/user.js"></script>
 		<script src="__PUBLIC__/fuguiji/js/global.js"></script>
 		<script>
+			$('.logoutBox .logoutBtn').click(function() {
+				$.ajax({
+					url: host + "/User/outLogin",
+					type: "post",
+					data: { token: userInfo.token },
+					dataType: "json",
+					async: true,
+					success: function(data) {
+						if(data.errcode != 10000) {
+							alertMsg(data.msg);
+						} else {
+							//                chicken = {"data":data.result};
+							var url = "<{:U('Index/index')}>";
+							window.location.href = url;
+						}
+
+					}
+				});
+			});
 			$('.peopleCenter>div').addClass('oneLine');
 			console.log($('.peopleCenter>div.gender').removeClass('oneLine'))
 			$(function() {
